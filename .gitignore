@@ -1,0 +1,7 @@
+.ssh*
+outputs*
+unsloth_compiled_cache*
+from_google*
+_unsloth_sent*
+_unsloth_temp*
+llama.ccp*

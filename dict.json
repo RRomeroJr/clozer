@@ -1,0 +1,191 @@
+{
+  "io_prompts": [
+    {
+      "input": "Previously, you've known only <strong>sȳz</strong> to mean \"good\". While you can use <strong>sȳz</strong>\n with food, it generally refers to the quality, rather than the taste. To describe food as \"good\" (meaning that \nyou like the taste of it), you should use the word <strong>ēngenka</strong> instead.",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "{{c1::ēngenka}} is {{c2::good tasting}}, {{c4::sȳz}} is {{c3::good quality}}",
+        "Topic": "of food",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "In general, lunar and solar nouns tend to be count nouns, while terrestrial and aquatic nouns tend to be mass nouns.",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "{{c2::lun/ sol!c3}} nouns tend to be {{c1::countable}}<br>{{c3::ter/ aq!c2}} tend to be {{c1::uncoutable}}",
+        "Topic": "",
+        "hint_str": "",
+        "hint_str_hides": "z"
+      }
+    },
+    {
+      "input": "warning: LF will be replaced by CRLF<br>\n<br>git config core.autocrlf true/false<br>git can turn \\n to \\r\\n depending on your os/ the original file",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "<div>git config {{c1::core.autocrlf}} true/false</div>{{c1::core.autocrlf}} can turn {{c2::\\n to \\r\\n}} depending on<br>{{c3::os}}/ {{c4::the original file}}<br>avoids {{c5::pointless changes}}<br>",
+        "Topic": "git",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "<pre>js innerText turns &lt;br&gt; into \\n</pre>",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "<div>{{c1::innerText}} turns {{c2::&lt;br&gt;}} into {{c2::\\n}}<br></div>",
+        "Topic": "js",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "<pre>Skorverdon is always followed by noun in gen pulural</pre>",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "<div>{{c4::Skorverdon}} is always {{c3::followed}} {{c2::noun}} in {{c1::gen pl}}</div>",
+        "Topic": "",
+        "hint_str": "",
+        "hint_str_hides": "z"
+      }
+    },
+    {
+      "input": "skorverdon is the argument of sentence and is singular<br><br>skorverdon valoti <b>vaedas</b> not vaedis",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "skorverdon is the {{c1::argument of sentence}} and is {{c2::singular}}<br><br>skorverdon valoti<br>{{c3::vaedas!c4::vāedagon}}. Not {{c4::vaedis!c3::vāedagon}}",
+        "Topic": "",
+        "hint_str": "",
+        "hint_str_hides": "f"
+      }
+    },
+    {
+      "input": "HV question words: typically sp for animate and sk for inanimate",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "{{c1::question words}}<br>are typically {{c2::sp}} for {{c3::animate}}<br>and {{c2::sk}} for {{c3::inanimate}}",
+        "Topic": "question words",
+        "hint_str": "1",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "make a bidirecitonal dictionary in python",
+      "output": {
+        "NoteType": "ExCloze",
+        "Text": "Make a {{c1::bidirectional}} dict in {{c2::python}}"
+      }
+    },
+    {
+      "input": "SQL <br><br>someKey Integer Foreign Key References someTable(id) X<br>someKey Integer,<br>Foreign Key (someKey) References someTable(id) &lt;--<br>FOREIGN KEY declarations need to be separated from the column definitions.",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "<ul><li>{{c1::incorrect!c2}}<br>someKey Integer Foreign Key (someKey) References someTable(id)</li><li>{{c2::correct!c1}}<br>someKey Integer,<br>Foreign Key (someKey) References someTable(id)</li></ul>",
+        "Topic": "sql/ correct?",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "foreign key constraints not being enforced by default in SQLite.<br>cursor.execute(\"PRAGMA foreign_keys = ON;\")",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "<div>{{c2::foreign key}} constraints {{c1::are not}} enforced <br>by default in {{c3::SQLite}}.<br></div>",
+        "Topic": "",
+        "hint_str": "",
+        "hint_str_hides": "x"
+      }
+    },
+    {
+      "input": "foreign key constraints not being enforced by default in SQLite.<br> cursor.execute(\"PRAGMA foreign_keys = ON;\")",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "<div>Does: {{c1::enforce fk constraints}}<br>cursor.execute(\"{{c2::PRAGMA}} {{c3::foreign_keys}} = {{c4::ON}};\")<br></div>",
+        "Topic": "sqlite",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "need to dedicate time to making cards for left, right, inner join",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "<div>{{c1::Left Join}} keeps left col {{c2::no matter what}}</div>",
+        "Topic": "SQL",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "need to dedicate time to making cards for left, right, inner join",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "<div>{{c1::Inner Join}} only {{c2::keeps matches}} in {{c3::both cols}}</div>",
+        "Topic": "SQL",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "Select cid, name From pragma_table_info('table_name’); getc col # and name for table_name",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "Does: getc {{c1::col # and name}} from table_name<br>Select {{c2::cid}}, {{c3::name}} From {{c4::pragma_table_info}}({{c5::'table_name’}});&nbsp;",
+        "Topic": "SQL",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "Right Join (Not Supported in SQLite)",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "{{c1::Right Join}} not supported",
+        "Topic": "SQLite",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "you can create an index on table after it’s been created",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "you can create {{c1::an index}} on {{c2::a table}}<br>{{c3::after it’s been created}}",
+        "Topic": "SQL",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "python from import hard copy values that are literals",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "{{c1::from _ import _}} will {{c2::hard copy}} vals that are {{c3::literals}}",
+        "Topic": "py",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "python x for x in interable is called a Generator",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "{{c1::x for x in iterable}} &lt;-- is called a {{c2::Generator}}",
+        "Topic": "py",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    },
+    {
+      "input": "",
+      "output": {
+        "NoteType": "TopicCloze",
+        "Text": "There is {{c1::high/ low}} intensity coding<br>When in {{c1::low}} can have {{c2::distraction}} open on<br>side monitor",
+        "Topic": "",
+        "hint_str": "",
+        "hint_str_hides": ""
+      }
+    }
+  ]
+}

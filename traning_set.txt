@@ -1,0 +1,24 @@
+#separator:tab
+#html:true
+#notetype column:1
+TopicCloze	{{c1::ēngenka}} is {{c2::good tasting}}, {{c4::sȳz}} is {{c3::good quality}}	of food			"Previously, you've known only <strong>sȳz</strong> to mean ""good"". While you can use <strong>sȳz</strong>
+ with food, it generally refers to the quality, rather than the taste. To describe food as ""good"" (meaning that 
+you like the taste of it), you should use the word <strong>ēngenka</strong> instead."
+TopicCloze	{{c2::lun/ sol!c3}} nouns tend to be {{c1::countable}}<br>{{c3::ter/ aq!c2}} tend to be {{c1::uncoutable}}			z	In general, lunar and solar nouns tend to be count nouns, while terrestrial and aquatic nouns tend to be mass nouns.
+TopicCloze	<div>git config {{c1::core.autocrlf}} true/false</div>{{c1::core.autocrlf}} can turn {{c2::\n to \r\n}} depending on<br>{{c3::os}}/ {{c4::the original file}}<br>avoids {{c5::pointless changes}}<br>	git			"warning: LF will be replaced by CRLF<br>
+<br>git config core.autocrlf true/false<br>git can turn \n to \r\n depending on your os/ the original file"
+TopicCloze	<div>{{c1::innerText}} turns {{c2::&lt;br&gt;}} into {{c2::\n}}<br></div>	js			<pre>js innerText turns &lt;br&gt; into \n</pre>
+TopicCloze	<div>{{c4::Skorverdon}} is always {{c3::followed}} {{c2::noun}} in {{c1::gen pl}}</div>			z	<pre>Skorverdon is always followed by noun in gen pulural</pre>
+TopicCloze	skorverdon is the {{c1::argument of sentence}} and is {{c2::singular}}<br><br>skorverdon valoti<br>{{c3::vaedas!c4::vāedagon}}. Not {{c4::vaedis!c3::vāedagon}}			f	skorverdon is the argument of sentence and is singular<br><br>skorverdon valoti <b>vaedas</b> not vaedis
+TopicCloze	{{c1::question words}}<br>are typically {{c2::sp}} for {{c3::animate}}<br>and {{c2::sk}} for {{c3::inanimate}}	question words	1		HV question words: typically sp for animate and sk for inanimate
+ExCloze	Make a {{c1::bidirectional}} dict in {{c2::python}}	make a bidirecitonal dictionary in python			
+TopicCloze	<ul><li>{{c1::incorrect!c2}}<br>someKey Integer Foreign Key (someKey) References someTable(id)</li><li>{{c2::correct!c1}}<br>someKey Integer,<br>Foreign Key (someKey) References someTable(id)</li></ul>	sql/ correct?			SQL <br><br>someKey Integer Foreign Key References someTable(id) X<br>someKey Integer,<br>Foreign Key (someKey) References someTable(id) &lt;--<br>FOREIGN KEY declarations need to be separated from the column definitions.
+TopicCloze	<div>{{c2::foreign key}} constraints {{c1::are not}} enforced <br>by default in {{c3::SQLite}}.<br></div>			x	"foreign key constraints not being enforced by default in SQLite.<br>cursor.execute(""PRAGMA foreign_keys = ON;"")"
+TopicCloze	"<div>Does: {{c1::enforce fk constraints}}<br>cursor.execute(""{{c2::PRAGMA}} {{c3::foreign_keys}} = {{c4::ON}};"")<br></div>"	sqlite			"foreign key constraints not being enforced by default in SQLite.<br> cursor.execute(""PRAGMA foreign_keys = ON;"")"
+TopicCloze	<div>{{c1::Left Join}} keeps left col {{c2::no matter what}}</div>	SQL			need to dedicate time to making cards for left, right, inner join
+TopicCloze	<div>{{c1::Inner Join}} only {{c2::keeps matches}} in {{c3::both cols}}</div>	SQL			need to dedicate time to making cards for left, right, inner join
+TopicCloze	"Does: getc {{c1::col # and name}} from table_name<br>Select {{c2::cid}}, {{c3::name}} From {{c4::pragma_table_info}}({{c5::'table_name’}});&nbsp;"	SQL			"Select cid, name From pragma_table_info('table_name’); getc col # and name for table_name"
+TopicCloze	{{c1::Right Join}} not supported	SQLite			Right Join (Not Supported in SQLite)
+TopicCloze	you can create {{c1::an index}} on {{c2::a table}}<br>{{c3::after it’s been created}}	SQL			you can create an index on table after it’s been created
+TopicCloze	{{c1::from _ import _}} will {{c2::hard copy}} vals that are {{c3::literals}}	py			python from import hard copy values that are literals
+TopicCloze	{{c1::x for x in iterable}} &lt;-- is called a {{c2::Generator}}	py			python x for x in interable is called a Generator
