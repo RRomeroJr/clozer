@@ -1,0 +1,49 @@
+Installs
+
+pip install cmake
+
+git clone https://github.com/Microsoft/vcpkg.git D:\your\preferred\location\vcpkg
+cd D:\your\preferred\location\vcpkg
+.\bootstrap-vcpkg.bat -disableMetrics
+.\vcpkg install curl:x64-windows
+-----
+Env Vars
+
+$Env:CURL_LIBRARY = "path\to\vcpkg\installed\x64-windows\lib\libcurl.lib"
+$Env:CURL_INCLUDE_DIR = "path\to\vcpkg\installed\x64-windows\include"
+$Env:CMAKE_PREFIX_PATH = "path\to\vcpkg\installed\x64-windows"
+
+-----
+Source Changes
+
+save.py line 1061
+check = os.system("cp llama.cpp/build/bin/llama-* llama.cpp")
+doing some linux specific commands to move files
+Also A little below that
+check = os.system("rm -rf llama.cpp/build")
+
+replaced with equivilants using shutil
+
+--
+
+those commands are looking for llama exe-s in the bin folder but
+my setup atleast has them in a bin/Release folder
+for file in glob.glob("llama.cpp/build/bin/**/llama-*", recursive=True)
+now trying recursively to look look for files in the bin folder
+and any sub-dirs
+
+--
+1249
+
+# command = f"./{quantize_location} {full_precision_location} "\
+            #     f"{final_location} {quant_method} {n_cpus}"
+
+This is by subprocess.Popen which seemly runs the process in cmd
+and not in power shell.
+
+I could have checked for windows then said to run powershell but This
+felt cleaner
+
+ quantize_location = os.path.normpath("/" + quantize_location)
+            command = f".{quantize_location} {full_precision_location} "\
+                f"{final_location} {quant_method} {n_cpus}"
