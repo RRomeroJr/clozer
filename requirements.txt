@@ -9,3 +9,4 @@ bitsandbytes>=0.41.0
 scipy>=1.11.0
 click>=8.0.0  # Required by wandb/trl
 wandb>=0.15.0  # Optional but good to have explicitly listed
+cmake>=3.31.6
