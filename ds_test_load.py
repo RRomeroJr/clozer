@@ -6,7 +6,7 @@ from datasets import load_dataset
 from pprint import pprint, pformat
 # Create datasets for each split
 # combined = load_dataset('json', data_files={ 'train': 'convos_train.json', 'test': 'convos_test.json' }, field="conversations", split=None) 
-combined = dataset = load_dataset('parquet', 
+combined = load_dataset('parquet', 
                       data_files={
                           'train': 'attempt2_train.parquet',
                           'test': 'attempt2_test.parquet'
