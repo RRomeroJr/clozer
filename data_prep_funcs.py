@@ -565,7 +565,7 @@ def g_adjusted_vaguery():
     v = random.choice(vagueries)
     if random.random() < 0.5:
         v.replace(",", "")
-    v = abbrevs.abbrev(v, "random", 0.7)
+    v = abbrevs.abbrev(v, pref = "random", chance = 0.7)
     if random.random() < 0.5:
         v = v[0].upper() + v[1:]
     else:
