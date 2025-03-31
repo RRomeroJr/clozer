@@ -8,7 +8,6 @@ llama.ccp
 vcpkg
 lora_model
 fake_files
-*expanded*
 attempt[0-9]*
 ToCards_*
 rrjr
