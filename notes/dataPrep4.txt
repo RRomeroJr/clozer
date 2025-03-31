@@ -1,0 +1,10 @@
+Inject 1 empty convo
+inject empty blocks in some files
+inject random string convo
+inject random string block in some files
+
+-develop the system to inject garbage into the
+user input
+- add whitespace arg for randam_unicode_str
+- make garbage files of varying lengths and
+add those as convos
