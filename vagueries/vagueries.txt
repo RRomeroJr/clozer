@@ -1,0 +1,81 @@
+so in these examples you provided me can you use the following abbreviations
+Allows picking specific commits from one branch to another
+Helps analyze how a query will execute before running it
+Controls property attributes like writability and enumerability
+Simplifies creating immutable data structures with minimal code
+based on tense, mood, and subject agreement
+Filters grouped results instead of individual rows
+Enables iteration without storing all values in memory
+Helps distribute work across multiple CPU cores
+Affects how objects inherit properties and methods
+Expresses movement toward a place or goal
+When handling large datasets, performance can
+Helps ensure the integrity of related data across tables
+Between different types of data, compatibility may
+The sequence of operations affects
+Inconsistent results can arise if
+Without clear guidelines, collaboration often
+Affects the way resources are allocated in
+In some cases, the complexity of a solution
+Over time, the effectiveness of a strategy
+A simple approach might not always
+The order of execution can significantly impact
+To avoid conflicts, synchronization must
+When updating a system, dependencies often
+A function's return type determines
+Throughout the process, the ability to adapt
+Variables within a scope can
+that method offers flexibility
+Based on result the outcome might
+With increasing complexity, readability tends to
+A clear understanding can help.
+Debugging tools provide insight into
+Unoptimized queries can result in
+Each class in an inheritance chain
+On the stack its diff from
+Changes in the algorithm may lead to
+Without testing, assumptions about performance
+New features often require refactoring existing
+Subtle differences in syntax can
+For efficiency, the right data structure depends on
+utions the same just like in lunar or so
+If the function is recursive, it may
+Without indexing, searching through large tables
+The behavior of promises differs when
+Depending on the number of records, joins
+When inheritance is involved, constructors
+With async functions, error handling becomes
+The SELECT clause can also include
+When using map(), the return value
+Depnding on the input, the reslt might
+If the join conditon is not set prperly,
+The constrctor in a base clss
+Whle using try/catch, exceptrions are
+Basd on the order of oprations, results
+Whn await is usd, the function
+Withot proper normlization, redunancy in
+As long as the vlau is within bnds, indexng will
+When creatng a dict, keys must be
+Javascript, this can be confusng when
+The base clas constructor is calld if
+Whn optimizing a query, indexng is
+Without valid syntax, parsing will
+The function signature dictates how
+For async functons await can
+When calling a funct, arguments must
+Without proper exceptn handlng, errs
+If the algorihm is too complx, perf
+By deflt, let variables ar
+Whn using C#, async methds rtn
+Model is val, constrnts enforc
+On th stack, variables ar stor
+With map(), th return vales ar
+If verb ends in -i, the form
+Pronouns change based on case, such as
+In High Valyrian, adjectives usually
+Noun declensions depend on
+When conjugating a verb, tense
+For singular nouns, the ending
+The accusative case often marks
+Words ending in -os typically
+In the vocative case, nouns
