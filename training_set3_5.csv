@@ -1,0 +1,535 @@
+#separator:tab
+#html:true
+#guid column:1
+#notetype column:2
+#deck column:3
+x|K;&c]P~E	TopicCloze	Active::ProgrammingGeneral::Windows	Type {{c1::cmd}} in file broswer's {{c2::address bar}} to open a cmd in that directory	win				<div>&nbsp;Windows: Type cmd in file broswer to open a cmd in that directory</div>	ToCards_01_03_25.odt
+l(!BJ6gf^z	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">const {{c1::extension}}=<br>vscode.{{c2::extensions}}.{{c3::getExtension}}('vscode.git')?.{{c4::exports}};</span>"	vscode				"<pre>&nbsp;const gitExtension =
+vscode.extensions.getExtension('vscode.git')?.exports;</pre>"	ToCards_01_03_25.odt
+DA<-g[Csl|	TopicCloze	Active::ProgrammingGeneral::javascript	"generate vs code extension<br><br><span class=""code"">yo code</span>"	<div>yeoman</div>				"Using Yeoman to
+generate vs code extensions<br><br>
+npm install --global
+yo generator-code
+<br>
+--
+<br>
+Yeoman: generate vs
+code extension <br><br>
+
+yo code"	ToCards_01_03_25.odt
+muQJV9F!=C	TopicCloze	Active::ProgrammingGeneral::javascript	"How to install Yeoman<br><br><span class=""code"">npm {{c3::install}} --global {{c1::yo}} {{c2::generator-code}}</span>"	yeoman				"Using Yeoman to
+generate vs code extensions<br><br>
+npm install --global
+yo generator-code
+<br>
+--
+<br>
+Yeoman: generate vs
+code extension <br><br>
+
+yo code"	ToCards_01_03_25.odt
+nVv!@!g>%G	TopicCloze	Active::ProgrammingGeneral::VSCode	<div>VScode Ext: press {{c1::F5}} to {{c2::test ext in new window}}</div>	vscode				"<br><div>VScode Ext: F5 to
+test extension in new vs code window</div><br>"	ToCards_01_03_25.odt
+n}m]F<eSq<	TopicCloze	Active::ProgrammingGeneral::git	"<span class=""code"">git add ""file path"" {{c1::-p}}</span><br>git {{c2::patch mode}}. Allows you to stage&nbsp;{{c3::parts of a file}}"	git				"git add -p
+
+git patch. Allows you to stage parts of a file
+
+–
+
+“I only want to stage parts of this file”
+
+git add “file path” -p"	toCards_01_04_25.odt
+v}$b`~IlkB	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">~~(someVar)</span> <br><br>""~~"" is a way of conterting var to {{c1::an int}}"	js				The ~~ operator in JavaScript is a shorthand for converting a number to an integer<br>	ToCards_01_05_25.odt
+B0~^]x0q!s	TopicCloze	"Active::ProgrammingGeneral::C#"	"creating and passing a string array to a method<br><br><span class=""code"">YourMethod({{c2::new}} {{c1::string[]}} {{c3::{}} ""value1"", ""value2"", ""value3"" {{c3::} }});</span>"	"C#"				"C#: YourMethod(new string[] { ""value1"", ""value2"", ""value3"" });
+
+couldn’t make a string array for a argument	"	ToCards_01_05_25.odt
+fM4WD_go`h	ExCloze	Active::ProgrammingGeneral	{{c1::Lazily loaded}} usually means {{c2::not loaded}} {{c3::until needed}}	<pre>Lazily loaded usually means not actually loaded until needed</pre>	ToCards_01_07_25.odt				
+s~|nL&l8j	TopicCloze	Active::ProgrammingGeneral::JD	I’m setting {{c2::parentBuff}} in {{c1::buffhandler}}	JD				JD: I’m setting parentBuff in buffhandler	ToCards_01_07_25.odt
+u}_*1?D~sF	TopicCloze	Active::ProgrammingGeneral::VSCode	{{c1::Ctrl + shift + e}}<br>swaps {{c2::between sidebar}} and the {{c3::text editor window}}	vscode				Vscode: Ctrl + shift + e swaps between sidebar and the text editor window	ToCards_01_08_25.odt
+x;2|aArNF.	TopicCloze	Active::ProgrammingGeneral::VSCode	{{c1::ctrl + f }} to find or {{c6::h}} to replace then..<br>{{c2::alt + c}} for {{c3::case}} {{c4::alt + w}} for match {{c5::word}}	vscode				vscode: ctrl +f to find or h to replace then.. alt + c for case alt + w for match word	ToCards_01_08_25.odt
+B?oy0[Ei7a	TopicCloze	Active::ProgrammingGeneral::JD	AbilityEff_V2 {{c1::network serialization}}:<br>- Save {{c2::type}} as {{c3::string}}, send it over<br>- Call that type's {{c6::OnWrite()}}<br>- On the other side, read it and instantiate {{c4::type}}.<br>- Call that type's {{c5::OnRead()}}	JD				The way AbilityEff_V2 network serialization works is we save the type as a string, send it over, and then on the other side we read it and instantiate a new one. Then set the values appropriately.&lt;	ToCards_01_08_25.odt
+NWh2)Agpf8	ExCloze	Active::ProgrammingGeneral::JD	JD when {{c1::cloning}} AbilityEff_V2 if you have {{c2::ref type}} fields keep in mind… {{c3::explictly make a hard copy}}	"<div>&nbsp;JD when cloning AbilityEff_v2 if you have reference type fields keep
+in mind…</div>
+<div>The copy will just
+be another pointer to that object not a hard copy.</div>"	ToCards_01_10_25.odt				
+i%9N7G2)IL	ExCloze	Active::ValyParent::Inflection::Declension::Notes	{{c1::'y'}} {{c5::Nouns}} {{c3::'m'}} in {{c4::Ins}}.<br>{{c5::Adjs}} retain the s.	"<div>&nbsp;Valy: Declining words that end in y, think “is this a adj or a
+noun”</div>
+<div><br>
+</div>
+<div>The nouns are
+usually double m for Ins/Com. Adjs retain the s.</div>"	ToCards_01_10_25.odt				
+s*&W]i-/e(	TopicCloze	"Active::ProgrammingGeneral::C#"	"<span class=""code"">{{c1::Activator.CreateInstance()}}</span><br><br>use to create an {{c2::instance}} from a {{c3::type}}"	"C#"				Activator.CreateInstance use to create an instance from a type	ToCards_01_12_25.odt
+kKx<.7|5Gd	TopicCloze	Active::ProgrammingGeneral::Unity	"<span class=""code"">{{c1::[SerializeReference]}} </span> cannot serialize objects the derive form {{c2::UnityEngine.Object}}"	unity				Serialize reference cannot serialize objects the derive form Unity.Object	toCards_01_12_25.odt
+pr*K}.%ytL	ExCloze	Active::ValyParent::Notes	Illicit Aequence:<br>{{c2::jr}} <br>simplifies to {{c1::j}}.	<em>jr</em> sequence is illicit in High Valyrian, and so simplifies to <em>j</em>.	ToCards_01_16_25.odt				
+"InyVs#G.:+"	ExCloze	Active::ValyParent::Notes	Illicit Aequence:<br>{{c2::hr}} <br>becomes {{c1::rh}}.	"<span><em>hr</em> is not a licit sequence of High Valyrian always becomes rh<br>
+<em>ñuhra</em> -&gt; <em>ñurha</em> </span>"	ToCards_01_16_25.odt				
+Jxv`~[9BA4	ExCloze	Active::ValyParent::Notes::Misc	Terrestrial nouns refer to {{c1::places}}, {{c2::inanimate objects}}, or {{c3::abstract ideas}}	Most terrestrial nouns refer to places, inanimate objects, or abstract ideas or actions.	ToCards_01_16_25.odt				
+d{S<i$)pD3	ExCloze	Active::ValyParent::Notes	ñuhyz jentyssy -&gt; ñuhy<b>s</b> tubissa<br>when preceeding {{c1::voiceless stops}}	"<div><em>k</em>, <em>p</em>, <em>s</em>, or <em>t</em>. <br>
+<br>
+<br>
+ñuhyz jentyssy -&gt; ñuhy<b>s</b> tubissa but only when preceeding</div>"	ToCards_01_16_25.odt				
+t4ei^MJ1nQ	ExCloze	Active::ValyParent::Notes	in Duo Lingo, {{c1::c-fin vocieless stop}} words use<br>non-standard {{c2::-is}} instead of {{c2::-si}} for plural.<br>{{c3::Ignore corrections}}.	"<div>
+  
+</div>in duo lingo c-fin vocieless stop words tend to use the non-standard -ie instead of -si for plural. Be aware of it and ignore corrections.<span></span><span></span>"	ToCards_01_16_25.odt				
+L*rKo?u>Q;	ExCloze	Active::ValyParent::Inflection::Declension::Notes	{{c2::on}} {{c1::(nouns)}}, {{c3::os}}, {{c4::io}}, {{c5::ion}}<br>get {{c6::s in Com}} usually<br><br>{{c7::adjs.}} retain {{c8::Ins/Com forms}}.	"<pre>on (nouns), os, io, ion get s in ins and com usually
+
+adj. retain both Ins/Com forms. Not joined</pre><div></div><div></div>"	ToCards_01_16_25.odt				
+eg4DeS8|Z3	TopicCloze	Active::ProgrammingGeneral::CSS	1em == {{c1::size of the font used}}	css				<pre>40em. in css <strong>1em</strong> equals the size of the font used in the element. </pre>	ToCards_01_17_25.odt
+lfz-`?yV-<	ExCloze	Active::ProgrammingGeneral::Misc	Each char in a {{c2::monospace font}} has {{c1::the same width}}&nbsp;	"<div>
+<br>
+</div>
+<pre>In monospace fonts (where each character hath the same width), 1em approximately representeth the width of one character, so 26em would roughly correspond to 26 characters. However:
+
+    In proportional fonts (like Arial or Times New Roman), character widths vary, and 1em reflects the size of the font rather than a precise number of characters.
+</pre>"	ToCards_01_17_25.odt				
+qAHUn4T?Ho	ExCloze	Active::ProgrammingGeneral::Misc	{{c2::Proportional font}} chars {{c1::vary in width}}	"<div>
+<br>
+</div>
+<pre>In monospace fonts (where each character hath the same width), 1em approximately representeth the width of one character, so 26em would roughly correspond to 26 characters. However:
+
+    In proportional fonts (like Arial or Times New Roman), character widths vary, and 1em reflects the size of the font rather than a precise number of characters.
+</pre>"	ToCards_01_17_25.odt				
+tWXewwLv5,	ExCloze	Active::ProgrammingGeneral::Misc	What I’ve learned from JD's {{c1::ability system}}'<br>“{{c3::classes as methods}} {{c2::combined with their params}}”	<pre>JD’s ability system taught me to use “classes as methods combined with their params”</pre>	ToCards_01_17_25.odt				
+qhsNa7E-EM	ExCloze	Active::LangGeneral	"{{c1::""Homorganic""}} speech sounds are produced at the {{c2::same place of articulation}}"	"<pre>""Homorganic"" meaneth that two speech sounds art produced with the same place of articulation in the mouth. For example, the sounds /m/, /p/, and /b/ art homorganic, as they art all made with both lips (bilabial sounds).</pre>"	ToCards_01_17_25.odt				
+mUV}00?cmJ	ExCloze	Active::LangGeneral	A {{c1::relative clause}} modifies {{c2::a noun}} or a {{c2::noun phrase}}.	A relative clause modifies a noun or a noun phrase.	ToCards_01_17_25.odt				
+qZK!8RkIKD	ExCloze	Active::ValyParent::Notes	HV word order {{c1::SOV}} generally	"Dont have to do all this but<br><br>
+
+High Valyrian is a strongly head-final language, and word order is subject–object–verb (SOV). Thus, in general, verbs follow their direct objects and adverbs which modify them; nouns follow the adjectives, demonstratives, possessors (genitive modifiers), locative modifiers, adpositional phrases and relative clauses which modify them; possessees follow possessors; adjectives follow the adverbs and adpositions which modify them; and most adpositions are postpositions, with only a few prepositions occuring.
+"	ToCards_01_17_25.odt				
+hIOPK|T6b$	TopicCloze	Active::ValyParent::Notes	The {{c1::“past participle”}} is actually the {{c2::passive past participle}}	HV				"HV
+<br>The “past participle” is actually the “passive past participle”"	ToCards_01_18_25.odt
+"jnkYb#$gW;"	ExCloze	Active::ValyParent::Notes	HV Wiki: {{c1::(Conj. By Tense)}}'s {{c2::Past habitual}} {{c3::1<sup>st</sup>}}&nbsp;person {{c3::plural}}<br>&nbsp;ending looks like {{c4::i?}}<br>&nbsp;when I think it should be {{c5::iti}}<br>&nbsp;Conj verb tables have it as {{c5::iti}}	"In Conj. By tense Past habitual 1<sup>st</sup> person plural ending looks like
+
+i? when I think it should be iti
+
+Conj verb tables have it as iti"	ToCards_01_19_25.odt				
+O+8I%6Ec-j	ExCloze	Active::ValyParent::Notes	HV Wiki: there are {{c1::hidden pages}} that {{c2::difficult to find}}<br><br>Like {{c3::Non-Canonical Vocabulary}}	"On the wiki there are a lot of hidden pages that aren’t easy to find
+
+like<br>
+<br>
+https://wiki.languageinvention.com/index.php?title=User:Juelos/High_Valyrian_Non-Canonical_Vocabulary"	ToCards_01_19_25.odt				
+o49?+qs.>i	TopicCloze	Active::ValyParent::Notes	Valy is strongly head {{c1::final}}	HV				"Dont have to do all this but<br><br>
+
+High Valyrian is a strongly head-final language, and word order is subject–object–verb (SOV). Thus, in general, verbs follow their direct objects and adverbs which modify them; nouns follow the adjectives, demonstratives, possessors (genitive modifiers), locative modifiers, adpositional phrases and relative clauses which modify them; possessees follow possessors; adjectives follow the adverbs and adpositions which modify them; and most adpositions are postpositions, with only a few prepositions occuring.
+"	ToCards_01_17_25.odt
+d;6Oh(q6vl	TopicCloze	Active::ValyParent::Notes	In general<br>(Noun modifier) {{c1::preceeds}} the noun	HV				"Dont have to do all this but<br><br>
+
+High Valyrian is a strongly head-final language, and word order is subject–object–verb (SOV). Thus, in general, verbs follow their direct objects and adverbs which modify them; nouns follow the adjectives, demonstratives, possessors (genitive modifiers), locative modifiers, adpositional phrases and relative clauses which modify them; possessees follow possessors; adjectives follow the adverbs and adpositions which modify them; and most adpositions are postpositions, with only a few prepositions occuring.
+"	ToCards_01_17_25.odt
+MquJ9gO$SL	TopicCloze	Active::ValyParent::Notes	In general<br>(Adj modifier) {{c1::preceeds}} the adj	HV				"Dont have to do all this but<br><br>
+
+High Valyrian is a strongly head-final language, and word order is subject–object–verb (SOV). Thus, in general, verbs follow their direct objects and adverbs which modify them; nouns follow the adjectives, demonstratives, possessors (genitive modifiers), locative modifiers, adpositional phrases and relative clauses which modify them; possessees follow possessors; adjectives follow the adverbs and adpositions which modify them; and most adpositions are postpositions, with only a few prepositions occuring.
+"	ToCards_01_17_25.odt
+pj$N&qpgK`	ExCloze	Active::ToDoGeneral	I should learn {{c1::kanji now}} as an {{c2::investment}}.<br>Better to learn it {{c3::before}} you want to learn the language	I should leran kanji now as an investment. Better to learn it before you actually want to learn the language then during.	ToCards_01_19_25.odt				
+uf`qxZD6]>	TopicCloze	Active::ProgrammingGeneral::git	"<span class=""code"">git cherry-pick 5401030..main</span><br><br>{{c1::1<sup>st</sup> commit}}&nbsp;is {{c2::NOT included}}"	git				"<pre>git cherry-pick 5401030..main<br>
+<br>
+When cherry picking multiple commits like this the 1<sup>st</sup> commit is NOT included</pre>"	ToCards_01_22_25.odt
+z+t0wv37ew	TopicCloze	Active::ProgrammingGeneral::git	"<span class=""code"">git cherry-pick 5401030^..main</span><br><br> {{c1::The carrot}} {{c2::includes}} the 1<sup>st</sup> commit<br>"	git				"<div>
+<br>
+git cherry-pick 5401030<b>^</b>..main<br>
+<br>
+</div>
+<pre>with the carrot includes the 1<sup>st</sup> commit
+</pre>"	ToCards_01_23_25.odt
+hZI@YfycWT	TopicCloze	Active::ProgrammingGeneral::git	"<span class=""code"">git {{c3::revert}} 5401030^..main</span><br><br>{{c3::revert}} works {{c1::backwards}} starts at {{c2::main}} then goes to 5401030"	git				"<pre>git revert 5401030^..main<br>
+<br>
+revert works backwards
+
+</pre>"	ToCards_01_23_25.odt
+J82>xIK0^L	TopicCloze	Active::ProgrammingGeneral::Python	{{c1::*}} is the {{c2::unpacking operator}} in python	py				<pre><br>* is the unpacking operator in python</pre>	ToCards_01_23_25.odt
+bCwGZ&NYQI	TopicCloze	Active::ProgrammingGeneral::Python	"How to send kwargs to the sub method?<br><br><span class=""code"">def sp_open(file, mode, <b>**kwargs</b>) -&gt; IO[Any]:<br>  return sub_method(file, {{c1::**kwargs}})</span><br>"	py				"def sp_open(file, mode, **kwargs) -&gt; IO[Any]:
+    if (mode == ""seq""):
+        return open_avoid_overwrite(file, [..])
+
+I want to send kwargs to the sub method how do?
+ans **kwargs"	ToCards_01_23_25.odt
+k_4SwP_69;	TopicCloze	Active::ProgrammingGeneral::Python	"<span class=""code"">some_dict.get(""encoding"", None)</span><br>Get from {{c1::dictionary}} with {{c2::default value}}&nbsp;"	py				"<pre>kwargs.get(""encoding"", None)
+
+Get from dictionary with default value python
+
+</pre>"	ToCards_01_22_25.odt
+I^8p,7CW0l	TopicCloze	Active::ProgrammingGeneral::Python	"<span class=""code"">letters = [chr(x) for x in range(97, 123)]</span><br><br>{{c1::(do this)}} for {{c2::(each thing)}} in <br>{{c3::(range)}} then {{c4::make it a list}}"	py				"letters = [chr(x) for x in range(97, 123)]
+
+(do this) for (each thing) in (range) then make it a list"	ToCards_01_22_25.odt
+m>@Edd>u4i	TopicCloze	Active::ProgrammingGeneral::Python	"<span class=""code"">my_funct(*someTuple)</span><br><br>using {{c1::a tuple}} as the {{c2::*args}} for a function"	py				"<pre>my_funct(<b>*</b>someTuple)
+
+usinga tuple as the *args for a function</pre>"	ToCards_01_22_25.odt
+JNxauRd8M/	TopicCloze	"Active::ProgrammingGeneral::C#"	"{{c1::Enumerable.Range}} without the namespace {{c2::in front}}<br><br>
+<span class=""code"">{{c5::using}} {{c3::System.Linq}};<br>foreach (var i in {{c4::Range}}(0, 13)) {</span>"	"C#"				"Using System.Linq;
+foreach (var i in Range(0, 13))
+{
+
+Enumerable.Range <b>without</b> the namespace."	ToCards_01_23_25.odt
+O8[XYaL+7=	TopicCloze	"Active::ProgrammingGeneral::C#"	"C#'s equivilant to python’s {{c2:: range()}}<br><br>
+<span class=""code"">{{c1::Enumerable.Range}}</span>"	"C#"				"c#’s equivilant to python’s range<br>
+Enumerable.Range"	ToCards_01_23_25.odt
+q.y5^!N1n`	TopicCloze	Active::ProgrammingGeneral::Python	"{{c1::extends list::Does?}} w/ {{c3::another list::Does?}}<br><br><span class=""code"">mylist1.{{c2::extend}}(some_other_list)
+</span>"	py				"python extend a list with a different list<br>
+<br>
+mylist1.extend(some_other_list)"	ToCards_01_23_25.odt
+Qv9}he_nIn	TopicCloze	Active::ProgrammingGeneral::Python	"{{c4::for-in loop}}<br><br><span class=""code"">for {{c1::x}} {{c2::in}} {{c3::range(10)}}</span>"	py				"simple python for loop
+
+for I in range(10)"	ToCards_01_23_25.odt
+j:E_+*9w(5	TopicCloze	"Active::ProgrammingGeneral::C#"	"{{c5::split::Does?}} filename and ext<br><br><span class=""code"">using Sytem.IO.Path;<br>var filePath = ""example.txt"";<br>var fileName = Path.<br>&nbsp; {{c3::GetFileNameWithoutExtension}}(filePath); //{{c2::“example”}}<br>var extension = Path.{{c4::GetExtension}}(filePath); // {{c1::“.txt”}}</span>"	"C#"				"c# split filename and extension
+<br><br>using Sytem.IO.Path
+<br><br>var filePath = ""example.txt"";
+<br>var fileName = Path.GetFileNameWithoutExtension(filePath); // “example”
+<br>var extension = Path.GetExtension(filePath); // “.txt”"	ToCards_01_23_25.odt
+N74cy;:d.L	TopicCloze	"Active::ProgrammingGeneral::C#"	"<span class=""code"">string string text = ""hello world"";<br>{{c3::string[]}} res = text.{{c1::Split();}}<br>&nbsp;// Splits into {{c2::{“hello”, “world”} }}</span>"	"C#"				"C# split string
+<br> <br>string text = ""hello world"";
+<br>string[] parts = text.Split(); // Splits into {“hello”, “world”}"	ToCards_01_23_25.odt
+p/,dg]n.xy	TopicCloze	"Active::ProgrammingGeneral::C#"	"<span class=""code"">// v Example of method with {{c1::unlimited args}} v<br><br>void PrintArgs({{c2::params}} object{{c3::[]}} args) {<br>&nbsp; foreach (var arg in args) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; Console.WriteLine(arg);</span>"	"C#"				"C#"	ToCards_01_23_25.odt
+l9t;J.Pme;	TopicCloze	"Active::ProgrammingGeneral::C#"	"{{c2::Directive}} example.<br>Creates a {{c1:: Dictionary}} w/ new keyword {{c6::GenDict}}<br><br><span class=""code"">{{c3::using}} GenDict =<br>{{c5::System.Collections.Generic.Dictionary}}&lt;string, object&gt;;</span><br>But, doesn't support {{c4::generic types}}. No {{c4::Dictionary&lt;T, T2&gt;}}"	"C#"				"C# Directive example. Can create a Dict with new keyword GenDict
+<br>using GenDict = System.Collections.Generic.Dictionary&lt;string, object&gt;;
+<br> <br>But, it don’t not support generic type aliases in using directives.
+<br>No Dictionary&lt;T, T2&gt;"	ToCards_01_23_25.odt
+K3|U/70t~|	TopicCloze	"Active::ProgrammingGeneral::C#"	"alternative to {{c1::directive aliases}} is to just {{c3::inherit}}<br><br>Dictionary to Dict:<br><span class=""code"">public {{c2::class Dict&lt;T, T2&gt; : Dictionary&lt;T, T2&gt; { } }}</span>"	"C#"				"alternative to directive aliases for classes<br>
+public class Dict&lt;T, T2&gt; : Dictionary&lt;T, T2&gt; { }"	ToCards_01_23_25.odt
+QqYu3kN%T1	TopicCloze	"Active::ProgrammingGeneral::C#"	I think that {{c1::inheritance}} only changes the {{c2::V-table}} of an object	"C#"				"C# I think that inheritance only changes the V-table of an object"	ToCards_01_23_25.odt
+I7di-dilTt	TopicCloze	"Active::ProgrammingGeneral::C#"	"There {{c3::2}} types of directives<br>{{c3::<ul><li>#region - {{c1::Preprocessor directive}}</li><li>using newAlias = …; - {{c2::Directive}}</li></ul>}}"	"C#"				"#region – Preprocessor directive
+using newAlias = …; - directive"	ToCards_01_23_25.odt
+E)u4X<}yZ$	TopicCloze	"Active::ProgrammingGeneral::C#"	{{c1::///}} in {{c3::VSCode}} will {{c2::auto comment out next line}}<br>when you press enter	"C#"				"c# /// will automatically comment out the next line when you press enter"	ToCards_01_23_25.odt
+sq5%,LxlrN	TopicCloze	"Active::ProgrammingGeneral::C#"	"You can kinda read <span class=""code"">IEnumerable.{{c1::Select}}</span> as {{c2::“for”}}"	"C#"				You can kinda read Ienumerable.Select as “for”	ToCards_01_23_25.odt
+xN2}C{P/)|	ExCloze	Active::ProgrammingGeneral	An {{c1::iterator}}/ {{c2::enumerable}} is a {{c3::collection}}<br>where each {{c4::ele doesn’t exist}} until {{c5::asked for}}	An iterator/ enumerable is a collection of things where each element doesn’t yet exist until asked of&lt;	ToCards_01_23_25.odt				
+P7.`HB_!e9	ExCloze	Active::UsingAnki	srs interval modifier formula<br><br>{{c1::log}}({{c2::desired retention%!c3}})/ {{c1::log}}({{c3::current retention%!c2}})<br>{{c4::%s as decimals}}	srs interval modifier formula<br>log(desired retention%) / log(current retention%) decimals	ToCards_01_23_25.odt				
+k5/T:SWru9	ExCloze	Active::math	Simply {{c1::multiplying}} {{c4::elements of 2 vectors}} together is the<br>{{c2::Hadamard product?}} or {{c3::element-wise product}}	"<pre>Hadamard product or element wise product. Simply multiply the elements of the vectors together
+
+</pre>"	ToCards_01_24_25.odt				
+wujEQQW/jx	ExCloze	Active::ProgrammingGeneral::git	git {{c1::“branches”}} are just aliases for {{c2::a particular commit}}	"
+git “branches” are just aliases for commit
+"	ToCards_01_24_25.odt				
+eN9=yzbQ;;	TopicCloze	Active::ProgrammingGeneral::git	Amending commit. {{c5::Use with caution}}<br><ul><li>git {{c2::commit}} {{c1::–amend}}</li><li>git {{c3::push}} {{c4::–force}}</li></ul>				ul	"
+git commit –amend<br>git push –force
+"	ToCards_01_24_25.odt
+A/QiazrTS?	TopicCloze	Active::ValyParent::Notes	{{c1::Ins Passive}}<br><ul><li>Add {{c3::s-}} to: {{c2::vl. stops (p, t, k, or q)}}</li></ul><br>	Ins Pass.	1			"<div>To form the instrumental passive…</div>
+<ul>
+<li>Add <em>s-</em> to verbs beginning with <em>p</em>, <em>t</em>, <em>k</em>, or <em>q</em>.</li>
+<li>Add <em>z-</em> to verbs beginning with <em>b</em>, <em>d</em>, <em>g</em>, <em>l</em>, or <em>r</em> (note that the sequence <em>zr</em> becomes <em>j</em>).</li>
+<li>Add <em>h-</em> to verbs beginning with any vowel <em>except</em> <em>e</em> and <em>o</em>.</li>
+<li>Add <em>a-</em> to verbs beginning with anything else.</li></ul>"	HV_tips_and_tricks
+e3:0!?xEZ]	TopicCloze	Active::ValyParent::Notes	{{c1::Ins passive}}<br><ul><li>Add {{c4::z-}} to: {{c2::v'd stops/ liquid (b, d, g, l, r)}}<br>{{c3::(zr becomes j) !c1!c2}}<br></li></ul><br>	Ins Pass.	1			"<div>To form the instrumental passive…</div>
+<ul>
+<li>Add <em>s-</em> to verbs beginning with <em>p</em>, <em>t</em>, <em>k</em>, or <em>q</em>.</li>
+<li>Add <em>z-</em> to verbs beginning with <em>b</em>, <em>d</em>, <em>g</em>, <em>l</em>, or <em>r</em> (note that the sequence <em>zr</em> becomes <em>j</em>).</li>
+<li>Add <em>h-</em> to verbs beginning with any vowel <em>except</em> <em>e</em> and <em>o</em>.</li>
+<li>Add <em>a-</em> to verbs beginning with anything else.</li></ul>"	HV_tips_and_tricks
+lHqR9/;w}	TopicCloze	Active::ValyParent::Notes	{{c1::Ins Passive}}<br><ul><li>Add {{c3::h-}} to: {{c2::vowels,}} {{c4::not (e, o)!c2}}</li></ul>	Ins Pass.	1			"<div>To form the instrumental passive…</div>
+<ul>
+<li>Add <em>s-</em> to verbs beginning with <em>p</em>, <em>t</em>, <em>k</em>, or <em>q</em>.</li>
+<li>Add <em>z-</em> to verbs beginning with <em>b</em>, <em>d</em>, <em>g</em>, <em>l</em>, or <em>r</em> (note that the sequence <em>zr</em> becomes <em>j</em>).</li>
+<li>Add <em>h-</em> to verbs beginning with any vowel <em>except</em> <em>e</em> and <em>o</em>.</li>
+<li>Add <em>a-</em> to verbs beginning with anything else.</li></ul>"	HV_tips_and_tricks
+E/4L*)bsTW	TopicCloze	Active::ValyParent::Notes	{{c1::Ins Passive}}<br><ul><li>Add {{c3::a-}} to: {{c2::anything else}}</li></ul>	Ins Pass.	1			"<div>To form the instrumental passive…</div>
+<ul>
+<li>Add <em>s-</em> to verbs beginning with <em>p</em>, <em>t</em>, <em>k</em>, or <em>q</em>.</li>
+<li>Add <em>z-</em> to verbs beginning with <em>b</em>, <em>d</em>, <em>g</em>, <em>l</em>, or <em>r</em> (note that the sequence <em>zr</em> becomes <em>j</em>).</li>
+<li>Add <em>h-</em> to verbs beginning with any vowel <em>except</em> <em>e</em> and <em>o</em>.</li>
+<li>Add <em>a-</em> to verbs beginning with anything else.</li></ul>"	HV_tips_and_tricks
+x3g(7T/}6!	TopicCloze	Active::ValyParent::Notes	"{{c1::Loc Applicative}}<br><ul><li style=""text-align: justify;"">{{c3::Replace}} {{c4::h-}} {{c3::with}}: {{c2::v}}</li></ul>"	Loc App.	1			"<div>To form the locative applicative…</div>
+<ul>
+<li>Replace the <em>h</em> at the beginning of a verb with <em>v</em>.</li>
+<li>Add <em>v-</em> to verbs beginning with any vowel other than <em>e</em> or <em>ē</em>.</li>
+<li>Add <em>u-</em> to all other verbs.</li></ul>"	HV_tips_and_tricks
+cuA~dYdTS-	TopicCloze	Active::ValyParent::Notes	{{c1::Loc Applicative}}<br><ul><li>{{c3::Add}} {{c4::v-}} {{c3::to}}: {{c2::vowels}} {{c5::not (e, ē)!c2}}</li></ul>	Loc App.	1			"<div>To form the locative applicative…</div>
+<ul>
+<li>Replace the <em>h</em> at the beginning of a verb with <em>v</em>.</li>
+<li>Add <em>v-</em> to verbs beginning with any vowel other than <em>e</em> or <em>ē</em>.</li>
+<li>Add <em>u-</em> to all other verbs.</li></ul>"	HV_tips_and_tricks
+C6g|qp7jz	TopicCloze	Active::ValyParent::Notes	{{c1::Loc Applicative}}<br><ul><li>{{c3::Add}} {{c4::u-}} {{c3::to}}: {{c2::anything else}}</li></ul>	Loc App.	1			"<div>To form the locative applicative…</div>
+<ul>
+<li>Replace the <em>h</em> at the beginning of a verb with <em>v</em>.</li>
+<li>Add <em>v-</em> to verbs beginning with any vowel other than <em>e</em> or <em>ē</em>.</li>
+<li>Add <em>u-</em> to all other verbs.</li></ul>"	HV_tips_and_tricks
+gE0ZFzFx]P	TopicCloze	Active::ValyParent::Notes	{{c1::Oblique Applicative}}<br><ul><li>{{c3::Replace}} {{c4::h-}} {{c3::with}}: {{c2::j}}</li></ul>	Obl. App.	1			"<div>To form the oblique applicative…</div>
+<ul>
+<li>Replace the <em>h</em> at the beginning of a verb with <em>j</em>.</li>
+<li>Add <em>j-</em> to verbs beginning with <em>i</em>, <em>ī</em>, <em>u</em>, <em>ū</em>, <em>y</em>, <em>ȳ</em>, or any diphthong.</li>
+<li>Add <em>i-</em> to all other verbs.</li></ul>"	HV_tips_and_tricks
+Er<<jF%CQf	TopicCloze	Active::ValyParent::Notes	{{c1::Oblique Applicative}}<br><ul><li>{{c3::Add}} {{c5::j-}} {{c3::to}}: {{c2::long/ short i, u, y}} {{c4::and diphthongs!c2}}</li></ul>	Obl. App.	1			"<div>To form the oblique applicative…</div>
+<ul>
+<li>Replace the <em>h</em> at the beginning of a verb with <em>j</em>.</li>
+<li>Add <em>j-</em> to verbs beginning with <em>i</em>, <em>ī</em>, <em>u</em>, <em>ū</em>, <em>y</em>, <em>ȳ</em>, or any diphthong.</li>
+<li>Add <em>i-</em> to all other verbs.</li></ul>"	HV_tips_and_tricks
+t7u6,y8Q!h	TopicCloze	Active::ValyParent::Notes	{{c1::Oblique Applicative}}<br><ul><li>{{c3::Add}} {{c4::i-}} {{c3::to}}: {{c2::anything else}}</li></ul>	Obl. App.	1			"<div>To form the oblique applicative…</div>
+<ul>
+<li>Replace the <em>h</em> at the beginning of a verb with <em>j</em>.</li>
+<li>Add <em>j-</em> to verbs beginning with <em>i</em>, <em>ī</em>, <em>u</em>, <em>ū</em>, <em>y</em>, <em>ȳ</em>, or any diphthong.</li>
+<li>Add <em>i-</em> to all other verbs.</li></ul>"	HV_tips_and_tricks
+"NTS#$~fR$r"	ExCloze	Active::ProgrammingGeneral::VSCode	If you edit {{c1::env vars}} while s/th is open<br>{{c3::close and open}} to see changes	If you edit environment varaibles while something is open you need to close and open it again for it do see the chagnes	ToCards_01_29_25.odt				
+CVpB5{u`0y	TopicCloze	Active::ProgrammingGeneral::Python	"<ul><li><span class=""code"">import {{c1::glob}}</span></li><li><span class=""code"">filenames = {{c1::glob}}.{{c1::glob}}(sys.argv[1])</span></li></ul> <br> lets you use {{c3::wildcards}} from the commandline in {{c2::python}}<br>"	py	2		x	"import glob
+
+filenames = glob.glob(sys.argv[1])<br>
+
+lets you use wildcards from the commandline python"	ToCards_01_29_25.odt
+Fwy-4A+8ZU	ExCloze	Active::ProgrammingGeneral::ThingsToDo	Make command to {{c2::add paths to %PATH%}}<div>{{c1::Way to easy to forget}} {{c2::%PATH%}} in front of new path&nbsp;<br></div>	Make a command to add paths to %PATH%. It’s way to easy to remember to put “%PATH% in front of your new path and if you don’t it will overwrite everything.	ToCards_01_29_25.odt				
+IQQ>P<_ep5	ExCloze	Active::ProgrammingGeneral	<div>{{c1::short circuit conditioning}} means a {{c2::particular a value}} in</div><div>&nbsp;{{c3::|| or &amp;&amp;}} means {{c4::don’t check the rest}}<br></div>	<pre>short circuit conditioning is when you get a value in an || or an &amp;&amp; you don’t need to check the rest. True for || and false for &amp;&amp;.</pre>	ToCards_01_29_25.odt				
+JRB$0]iScH	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">parent.innerHTML =<br>parent.innerHTML.{{c4::replace}}(<br>&nbsp; /(&lt;span class=""Latn""&gt;.*?&lt;\/span&gt;)/, '{{c3::<b>$1</b>}}' );</span><br><br>  {{c3::$1}} represents the {{c2::first capture group}} from the regular expression."	regex				"parent.innerHTML = parent.innerHTML.replace(
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /(&lt;span class=""Latn""&gt;.*?&amp;lt;\/span&amp;gt;)/,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '$1'
+<br>&nbsp;&nbsp;&nbsp; );
+<br>$1 representeth the first capture group from the regular expression."	ToCards_01_29_25.odt
+PDdHw%S0^:	TopicCloze	Active::ProgrammingGeneral::regex	<ul><li>&nbsp;{{c1::.}} → Match {{c2::any character}} {{c3::(except newlines)}}.</li><li> {{c4::*}} → Match {{c5:: 0 &lt;= of preceeding char}}</li><li>{{c9::(some quantifier)}} {{c6::?}} →&nbsp;<br>This makes {{c7::preceeding lazy}}, {{c8::stops at the first match}}</li></ul>	regex				"<div>&nbsp;. → Match any character (except newlines).</div>
+<pre>* → Match zero or more of the preceding character (. in this case), meaning it matcheth as much as possible.
+? → This makes * lazy, meaning it stoppeth at the first match instead of the last.</pre>"	ToCards_01_29_25.odt
+A[y.L/1W@`	ExCloze	Active::ProgrammingGeneral::javascript	"JS: <span class=""code"">{{c1::Array.from()}}</span> can turn {{c2::an iterator into an array}}"	<br>The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object.	ToCards_02_02_25.odt				
+Q28}vgb:;/	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">function <b>withFunc</b>() {<br>&nbsp; console.log(""yo"");<br>}</span><br><span class=""code"">console.log(<b>withFunc</b>.toString());</span><br><br><span class=""code"">{{c1::function withFunc() {<br>&nbsp; console.log(""yo"");<br>}<br>::output?}}</span>"	JS				"JS:
+function withFunct() {
+  console.log(""yo"");
+}
+console.log(withFunct.toString());
+
+out:
+
+function withFunct() {
+  console.log(""yo"");
+}"	ToCards_02_02_25.odt
+fy8u}]-[Ha	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">function <b>withArrow&nbsp;</b>= ()&nbsp; =&gt; {<br>&nbsp; console.log(""yo"");<br>}</span><br><span class=""code"">console.log(<b>withArrow</b>.toString());</span><br><br><span class=""code"">{{c1::() =&gt; {<br>&nbsp; console.log(""yo"");<br>}<br>::output?}}</span>"	JS				"JS:<br> const withArrow = () =&gt; {<br>&nbsp; console.log(""yo"");<br>} <br>console.log(withArrow.toString());<br>out:<br> () =&gt; {<br>&nbsp; console.log(""yo"");<br>}"	ToCards_02_02_25.odt
+sm4`F(W<N}	TopicCloze	Active::ProgrammingGeneral::javascript	"{{c1::get the name}} of a {{c2::function}}<br><br><span class=""code"">myFunct.{{c3::name}}</span>"	JS				<br>get the name of a function<br><br>myFunct.name<br><br>	ToCards_02_02_25.odt
+wU{csEX+LG	TopicCloze	Active::ProgrammingGeneral::javascript	"get {{c1::name}} of a {{c4::variable}}<br><br><span class=""code"">{{c2::Object.keys}}({myVariable}){{c3::[0]}}</span>"	JS				get name of a variable<br><br>const myFirstName = 'John'<br>Object.keys({myFirstName})[0]<br>	ToCards_02_02_25.odt
+h@bV$NH7wb	TopicCloze	Active::ProgrammingGeneral::javascript	"{{c1::iterate over kvps}} in {{c2::object}}<br><br><span class=""code"">{{c3::Object.entries}}(mainFuncs).forEach( ({{c4::[key, value]}}) =&gt; {</span>"	JS				<br>JS: Object.entries(mainFuncs).forEach(([key, value]) =&gt; {<br><br>iterate over kvps in object<br>	ToCards_02_02_25.odt
+cRg1--VaZi	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">/**<br>* @type {Object&lt;String, Function&gt;}<br>*/</span><br>know that types are {{c3::sometimes}} are {{c2::captitalized}}"	JS				<br>/**<br> * @type {Object&lt;String, Function&gt;}<br> */<br><br>know that String and Function are captitalized<br>	ToCards_02_02_25.odt
+NsaJY&4qeO	TopicCloze	Active::ProgrammingGeneral::javascript	"<ul><li>{{c2::<span class=""code"">Element</span>}} is a general class representing {{c1::any DOM element}}</li><li>{{c3::<span class=""code"">HTMLElement</span>}} is a subclass of Element that represents {{c4:: specifically HTML elements (like <span class=""code"">&lt;div&gt;</span>, <span class=""code"">&lt;p&gt;</span>, etc.).}}</li></ul>"	JS				"
+<ul>
+<li><div><code>Element</code>
+  is a more general class representing any DOM element, including
+  <code>SVGElement</code>, <code>HTMLElement</code>,
+  etc.</div>
+</li><li><div><code>HTMLElement</code> is a subclass of
+  <code>Element</code> that specifically represents
+  HTML elements (like <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>,
+  etc.).</div>
+</li></ul>"	ToCards_02_02_25.odt
+ckzQb9yV=U	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">console.log({{c3::""h2s"", h2s}})</span>;<br><br>{{c2::log 2 things at same time}}. {{c1::Python}} can do this too"	JS				"<br> JS: can log 2 things at the same time. Python can do this too<br> console.log(""h2s"", h2s);"	ToCards_02_02_25.odt
+H_HDKt/*sT	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">{{c1::Array.some()}}</span> tests whether {{c2::at least one element}} {{c3::passes}} a {{c4::test function}}"	JS				"Array.some() is a JavaScript method that tests whether at least one element in an array passes a given test function &lt;-<br><br> const validTypes = [""Noun"", ""Adjective"", ""Verb""]<br> validTypes.some((e) =&gt; { _type.includes(e) });<br>"	ToCards_02_02_25.odt
+K0>nBG!G?:	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">const words = ['spray', 'elite', 'exuberant', 'destruction', 'present'];<br>const result = words.filter((word) =&gt; word.length &gt; 6);<br>console.log(result);</span><br><br><span class=""code"">{{c3::filter()}}</span> {{c2::removes}} what {{c1::matches}} the check<br><span class=""code"">// Expected output: Array [""exuberant"", ""destruction"", ""present""]</span>"	JS				"const words = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
+
+const result = words.filter((word) =&gt; word.length &gt; 6);
+
+console.log(result);
+// Expected output: Array [""exuberant"", ""destruction"", ""present""]
+
+JS: filter() removes what matches the check
+"	ToCards_02_02_25.odt
+x8NP2[!;cs	TopicCloze	Active::ProgrammingGeneral::javascript	"one way of {{c2::assigning 2 variabls at once}}<br><br><span class=""code"">{{c1::let [a, b] = [7, 117];}}</span>"	JS				<pre>let [a, b] = [7, 117]; one way of assigning 2 variabls at once</pre>	ToCards_02_02_25.odt
+o/>QV9[c:P	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">myArry.{{c2::find}}(e =&gt; {{c3::(s/th that evals True/ False)}});</span><br><br>returns {{c1::ele that passes the test}}"	JS				"const match = validTypes.find(e =&gt;
+_type.includes(e));
+find()
+"	ToCards_02_02_25.odt
+j!:tv@1ZHn	ExCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">const value = obj.key ?? 10; // 42</span><br><br>?? is {{c1::the null coalescer}}. Works on {{c2::undefined as well}}"	"const value = obj.key ?? 10; // 42
+
+?? null coalescing. Works on undefined as well"	ToCards_02_02_25.odt				
+c,^tOkIzM!	TopicCloze	Active::ProgrammingGeneral::javascript	"✅ Allowed in Content Scripts:<br><ul><li><span class=""code"">browser.runtime.{{c1::sendMessage}}()</span></li><li><span class=""code"">browser.{{c2::storage}}</span></li><li><span class=""code"">browser.{{c3::i18n&nbsp;}}</span></li></ul>"	JS				✅ Allowed:<br><ul><li>browser.runtime.sendMessage() / chrome.runtime.sendMessage()</li><li>browser.storage / chrome.storage</li><li>browser.i18n / chrome.i18n</li></ul>❌ Not Allowed (Background-Only):<br><ul><li>browser.tabs (e.g., tabs.update, tabs.create)</li><li>browser.windows</li><li>browser.webRequest</li><li>browser.contextMenus</li></ul>	ToCards_02_02_25.odt
+I/PvNrgk`_	TopicCloze	Active::ProgrammingGeneral::javascript	"❌ Not Allowed in Content scripts {{c4::(Background-Only)}}:<br><ul><li><span class=""code"">browser.{{c1::tabs}}</span></li><li><span class=""code"">browser.{{c2::windows}}</span></li><li><span class=""code"">browser.{{c5::webRequest}}</span></li><li><span class=""code"">browser.{{c3::contextMenus}}</span></li></ul>"	JS				✅ Allowed:<br><ul><li>browser.runtime.sendMessage() / chrome.runtime.sendMessage()</li><li>browser.storage / chrome.storage</li><li>browser.i18n / chrome.i18n</li></ul>❌ Not Allowed (Background-Only):<br><ul><li>browser.tabs (e.g., tabs.update, tabs.create)</li><li>browser.windows</li><li>browser.webRequest</li><li>browser.contextMenus</li></ul>	ToCards_02_02_25.odt
+M(]Cd<8<C@	TopicCloze	Active::ProgrammingGeneral::Python	In {{c1::classes}}, {{c2::__repr__()}} let's you {{c3::define}} how the class prints<br>	py				"Class called Phoneme <br>&nbsp; def __repr__(self): <br>&nbsp; &nbsp; return f""{self.__class__.__name__}('{self.letter}')""<br> <br> let’s you define how a class prints"	ToCards_02_20_25.odt
+tC)g(12;9-	TopicCloze	Active::ProgrammingGeneral::regex	each {{c1::()}} is a {{c2::capturing group}}	regex				"<pre>each () in a regex is a capture group
+</pre>"	ToCards_02_20_25.odt
+"pE#hAT76ej"	TopicCloze	Active::ProgrammingGeneral::regex	capturing grps can be {{c1::named}}.<br>How {{c2::depends}} on language..	regex				"<pre>regex capture groups can be named how you do it depends on the language<br>
+</pre>"	ToCards_02_20_25.odt
+B%5IBj{UE3	TopicCloze	Active::ProgrammingGeneral::javascript	{{c1::(}}{{c2::?}}{{c3::&lt;name&gt;}}{{c1::)}}<br>{{c4::named capturing grp}}	js				"
+javascript name capture group (?<name>…)
+</name>"	ToCards_02_20_25.odt
+QCw38I6As0	TopicCloze	Active::ProgrammingGeneral::Python	// prints {{c1::capturing grp 1}} from regex<br>&nbsp;print(match.{{c2::group(1)}})	py				// prints capture group 1 from regex python<br>print(match.group(1))	ToCards_02_20_25.odt
+QznrNFk[$2	TopicCloze	Active::ProgrammingGeneral::regex	{{c1::positive look ahead}} {{c2::(?=)}}	regex				regex positive look ahead (?=)<br> negative (?!)	ToCards_02_20_25.odt
+Fo>|/$%:qA	TopicCloze	Active::ProgrammingGeneral::regex	{{c1::negative look ahead}} {{c2::(?!)}}	regex				regex positive look ahead (?=)<br> negative (?!)	ToCards_02_20_25.odt
+"vqEdj*#4D4"	TopicCloze	Active::ProgrammingGeneral::regex	{{c1::non-capturing group}}<br>{{c2::(?:)}}	regex				<pre>regex non-capturing group (?:)</pre>	ToCards_02_20_25.odt
+lWIFVP73aI	TopicCloze	Active::ProgrammingGeneral::General	s/ts you need functions to {{c1::build a regex}} bc it’s too long	regex	1			sometimes you need functions to build a regex bc it’s too long	ToCards_02_20_25.odt
+ct(&az2k`/	TopicCloze	Active::ProgrammingGeneral::Python	{{c1::re.findall}} to match all w/ regex	py				python re.findall to match stuff with regex	ToCards_02_20_25.odt
+PPxH+XxrIH	TopicCloze	Active::ProgrammingGeneral::Python	{{c1::re.finditer()}} to match all &amp; get indices<br>{{c3::start()}} {{c2::inclusive}} {{c4::end()}} {{c2::exclusive}}	py				"re.finditer to match and get the indices
+start() inclusive end() exclusive"	ToCards_02_20_25.odt
+BO;YGd<kK9	TopicCloze	Active::ProgrammingGeneral::Python	{{c1::re.finditer()}} {{c2::empty match grps}} are {{c3::None}}	py				<pre>finditer match empty match grps are none</pre>	ToCards_02_20_25.odt
+lpH[X$Ax+/	TopicCloze	Active::ValyParent::Notes::Misc	{{c1::ēngenka}} is {{c2::good tasting}}, {{c4::sȳz}} is {{c3::good quality}}	of food				"Previously, you've known only <strong>sȳz</strong> to mean ""good"". While you can use <strong>sȳz</strong>
+ with food, it generally refers to the quality, rather than the taste. To describe food as ""good"" (meaning that 
+you like the taste of it), you should use the word <strong>ēngenka</strong> instead."	HV_tips_and_tricks
+D%P.vt_|=d	TopicCloze	Active::ValyParent::Notes	{{c2::lun/ sol!c3}} nouns tend to be {{c1::countable}}<br>{{c3::ter/ aq!c2}} tend to be {{c1::uncoutable}}			z		In general, lunar and solar nouns tend to be count nouns, while terrestrial and aquatic nouns tend to be mass nouns.	HV_tips_and_tricks
+eN[.P=q<Z*	TopicCloze	Active::ProgrammingGeneral::VSCode	vscode supports {{c2::jupyter notebooks}}. For python they are {{c1::.ipynb}} files	vscode				<pre>Vscode has an interactive mode? .ipynb like google collab. No idea how it works tho</pre>	ToCards_02_22_25.odt
+"M#P^<c&zO("	TopicCloze	Active::ProgrammingGeneral::Python	"<span class=""code"">{{c1::type()}}</span> w/ arg returns {{c2::the type}}<br><span class=""code"">{{c1::type()}}</span> w/ 3 args {{c3::dynamically}} {{c4::creates a new class}}<br><br><br><span class=""code"">{{c1::type}}(""MyClass"", (object,), {""x"": 42, ""hello"": lambda self: ""Hello, world!""})<br><br># **Vals**: {{c7::new cls name}}, {{c6::base cls}}, {{c5::dict of vars and methods}}</span>"	py				<pre>python type() returns the type as a string? Or maybe a type obj idk double check that</pre>	ToCards_02_22_25.odt
+m9]^Cz,uUc	TopicCloze	Active::ProgrammingGeneral::Python	{{c1::sys.exit()}} raises the {{c2::SystemExit exception}} to end the program	py				"<div>&nbsp;sys.exit() also raises the SystemExit exception. This means that it
+is the same as quit and exit in that respect.</div>
+<pre>Unlike those two however, sys.exit is considered good to use in production code. This is because the sys module will always be there.<br>
+<br>
+Nevertheless, quit should not be used in production code. This is because it only works if the site module is loaded. Instead, this function should only be used in the interpreter.</pre>"	ToCards_02_22_25.odt
+AzNZb[hv`Z	TopicCloze	Active::ProgrammingGeneral::Python	{{c2::sys.exit}} is {{c1::good}} to use in production. Bc the {{c1::sys module}}<br>is {{c3::always there}}.	py				"<div>&nbsp;sys.exit() also raises the SystemExit exception. This means that it
+is the same as quit and exit in that respect.</div>
+<pre>Unlike those two however, sys.exit is considered good to use in production code. This is because the sys module will always be there.<br>
+<br>
+Nevertheless, quit should not be used in production code. This is because it only works if the site module is loaded. Instead, this function should only be used in the interpreter.</pre>"	ToCards_02_22_25.odt
+y>I:P:i3S7	TopicCloze	Active::ProgrammingGeneral::Python	{{c1::quit()}} shouldn't be used in production. Bc it relys<br>on the {{c2::site module}}	py				"<div>&nbsp;sys.exit() also raises the SystemExit exception. This means that it
+is the same as quit and exit in that respect.</div>
+<pre>Unlike those two however, sys.exit is considered good to use in production code. This is because the sys module will always be there.<br>
+<br>
+Nevertheless, quit should not be used in production code. This is because it only works if the site module is loaded. Instead, this function should only be used in the interpreter.</pre>"	ToCards_02_22_25.odt
+IY2AeMVY$j	TopicCloze	Active::ValyParent::Notes	{{c4::Skorverdon}} is always {{c3::followed}} {{c2::noun}} in {{c1::gen pl}}			z		<pre>Skorverdon is always followed by noun in gen pulural</pre>	ToCards_03_02_25.odt
+"x%@%]Pk#1P"	TopicCloze	Active::ValyParent::Notes	skorverdon is the {{c1::argument of sentence}} and is {{c2::singular}}<br><br>skorverdon valoti {{c3::vaedas!c4::vāedagon}}. Not {{c4::vaedis!c3::vāedagon}}			f		skorverdon is the argument of sentence and is singular<br><br>skorverdon valoti <b>vaedas</b> not vaedis	ToCards_03_02_25.odt
+tF.+u.mKUz	TopicCloze	Active::ValyParent::Notes	{{c1::question words}}<br>are typically {{c2::sp}} for {{c3::animate}}<br>and {{c2::sk}} for {{c3::inanimate}}	question words	1			HV question words: typically sp for animate and sk for inanimate	ToCards_03_02_25.odt
+tVbeex+EkS	TopicCloze	Active::ProgrammingGeneral::Python	"{{c1::generating a tuple}}<br><ul><li><span class=""code"">(v for v in sv)</span> {{c2::incorrect!c3::correct?}}</li><li><span class=""code"">({{c4::tuple(v for v in sv)}}</span> {{c3::correct!c2::correct?}}&nbsp;</li></ul>"	py				"
+stat_row = (sk,)+tuple(v for v in sv)
+
+not (v for v in sv) but tuple(v for v in sv)"	ToCards_03_02_25.odt
+IDg`tg[2Lc	TopicCloze	Active::ProgrammingGeneral::SQL	"get {{c1::the sql gen statement}}<br> <span class=""code"">SELECT {{c2::sql}} {{c3::FROM}} {{c4::sqlite_master}} {{c5::WHERE}} {{c6::type='table'}} {{c7::AND}} {{c8::name = 'example'}};</span>"	g_sql	1			"<pre>get the create table statement of a table<br>
+SELECT sql FROM sqlite_master WHERE type='table' AND name='example'; </pre>"	ToCards_03_02_25.odt
+lGhZ$2>xK5	ExCloze	Active::ProgrammingGeneral::ThingsToDo	Make a {{c1::bidirectional}} dict in {{c2::python}}	make a bidirectional dictionary in python	ToCards_03_04_25				
+p|h?9^QjFg	TopicCloze	Active::ProgrammingGeneral::SQL	<ul><li>{{c1::incorrect!c2}}<br><br>someKey Integer Foreign Key (someKey) References someTable(id)<br><br></li><li>{{c2::correct!c1}}<br><br>someKey Integer,<br>Foreign Key (someKey) References someTable(id)</li></ul>	sql/ correct?				SQL <br><br>someKey Integer Foreign Key References someTable(id) X<br>someKey Integer,<br>Foreign Key (someKey) References someTable(id) &lt;--<br>FOREIGN KEY declarations need to be separated from the column definitions.	ToCards_03_04_25
+zzQT|EC0sH	TopicCloze	Active::ProgrammingGeneral::SQL	<div>{{c2::foreign key}} constraints {{c1::are not}} enforced <br>by default in {{c3::SQLite}}.<br></div>			x		"foreign key constraints not being enforced by default in SQLite.<br>cursor.execute(""PRAGMA foreign_keys = ON;"")"	ToCards_03_04_25
+hs4gg-kbVg	TopicCloze	Active::ProgrammingGeneral::SQL	"Does: getc {{c1::col # and name}} from table_name<br>Select {{c2::cid}}, {{c3::name}} From {{c4::pragma_table_info}}({{c5::'table_name’}});&nbsp;"	SQL				"Select cid, name From pragma_table_info('table_name’); getc col # and name for table_name"	ToCards_03_04_25
+s`oGIN)sK%	TopicCloze	Active::ProgrammingGeneral::SQL	{{c1::Right Join}} not supported	SQLite				Right Join (Not Supported in SQLite)	ToCards_03_04_25
+yCczDKgZ0H	TopicCloze	Active::ProgrammingGeneral::SQL	you can create {{c1::an index}} on {{c2::a table}}<br>{{c3::after it’s been created}}	SQL				you can create an index on table after it’s been created	ToCards_03_04_25
+ueN1VnYvUT	TopicCloze	Active::ProgrammingGeneral::Python	"<span class=""code"">{{c1::from _ import _}}</span> will {{c2::hard copy}} vals that are {{c3::literals}}"	py				python from import hard copy values that are literals	ToCards_03_04_25
+POB}2V_l*p	TopicCloze	Active::ProgrammingGeneral::Python	"<span class=""code"">{{c1::x for x in iterable}}</span> &lt;-- is called a {{c2::Generator}}"	py				python x for x in interable is called a Generator	ToCards_03_04_25
+"xWm>LAH#[)"	TopicCloze	Active::ProgrammingGeneral::SQL	{{c1::foreign keys}} don't need to be {{c2::unique}}.<br>They only need to exist in {{c3::another table’s col}}	SQL				foreign keys do not need to be unique identifers. They only need to exist in another table’s col	ToCards_03_04_25
+c699ra(|4N	TopicCloze	Active::ProgrammingGeneral::SQL	"<span class=""code"">{{c2::cursor}}.{{c1::description}}[{{c3::0}}]</span> to get {{c4::alias name}}"	sqlite				<pre>cursor.description[0] to get alias name</pre>	ToCards_03_04_25
+t7;hQ2&.h@	TopicCloze	Active::ProgrammingGeneral::SQL	"<ul><li><span class=""code"">WHERE x IS NULL</span> {{c1::correct!c2::correct?}}</li><li><span class=""code"">WHERE x = NULL</span> {{c2::incorrect!c1::correct?}}</li></ul>"	SQL				"<pre>IS NULL  not  = NULL<br>
+IS NOT NULL not != NULL</pre>"	ToCards_03_04_25
+os(k~DZh`D	TopicCloze	Active::ProgrammingGeneral::Python	"<div>makes string with generator<br></div><div><br></div><div><span class=""code"">{{c1::"""".join}}(f""{e}"" for e in some_iterable)</span></div>"	py				"<pre>"""".join(f""Create Table {n}2 (name)"" for n in table_names)<br>
+generator but making a string</pre>"	ToCards_03_04_25
+{~&4;&G22	TopicCloze	Active::ProgrammingGeneral::SQL	"<span class=""code"">INSERT INTO employees_new (id, name, age)<br>SELECT id, name, age FROM employees;</span><br><br>You can {{c1::insert}} from a {{c2::select}}"	SQL				"<pre>INSERT INTO employees_new (id, name, age)
+SELECT id, name, age FROM employees;<br>
+<br>
+insert from selection</pre>"	ToCards_03_04_25
+cgFA|^[O0J	TopicCloze	Active::ProgrammingGeneral::SQL	"<span class=""code"">{{c1::executescript()}}</span><br><br> will {{c2::automatically commit}} unless<br>you start with<br><br><span class=""code"">{{c3::BEGIN TRANSACTION;}}</span>"	sqlite				<pre>executescript will automatically commit unless you start with Begin Transaction;</pre>	ToCards_03_04_25
+B<qxk6u$a)	TopicCloze	Active::ProgrammingGeneral::SQL	"<span class=""code"">{{c1::ALTER}} {{c2::TABLE}} {{c3::some_table}}&nbsp;{{c4::RENAME}} {{c5::TO}} {{c6::new_name}};</span>"	SQL rename table				"<pre>ALTER TABLE employees_new RENAME TO employees;
+renaming table</pre>"	ToCards_03_04_25
+Q>yw~~_SX|	TopicCloze	Active::ProgrammingGeneral::SQL	"gets time from a {{c1::timestamp col}}.<br><br><span class=""code"">SELECT {{c2::strftime}}({{c3::'%some_arg'}}, {{c4::some_col}}) FROM example;</span>"	SQL				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+Hf][l6Eki7	TopicCloze	Active::ProgrammingGeneral::SQL	"<span class=""code"">{{c2::strftime}}()</span> stands for {{c1::string format time}}"	sqlite				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+mceNhq)[iu	TopicCloze	Active::ProgrammingGeneral::SQL	strftime format specifiers<br><br>{{c1::%Y}} - {{c2::Year!c3}} {{c3::(4 digits)}}	sqlite				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+w;`{EXSOpL	TopicCloze	Active::ProgrammingGeneral::SQL	strftime format specifiers<br><br>{{c1::%m}} - {{c2::Month}} {{c3::(2 digits)}}	sqlite				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+H2ZhZErS7i	TopicCloze	Active::ProgrammingGeneral::SQL	strftime format specifiers<br><br>{{c1::%d}} - {{c2::Day of Month!c3}} {{c3::(2 digits)}}	sqlite				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+sfu~N4)BeS	TopicCloze	Active::ProgrammingGeneral::SQL	strftime format specifiers<br><br>{{c1::%H}} - {{c2::Hour!c3}} {{c3::(24-hour format)}}	sqlite				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+EzAI?FI}2V	TopicCloze	Active::ProgrammingGeneral::SQL	strftime format specifiers<br><br>{{c1::%M}} - {{c2::Minute}}	sqlite				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+M&f(Y%Iwv-	TopicCloze	Active::ProgrammingGeneral::SQL	strftime format specifiers<br><br>{{c1::%S}} - {{c2::Second}}	sqlite				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+MXZQAdo6x.	TopicCloze	Active::ProgrammingGeneral::SQL	strftime format specifiers<br><br>{{c1::%s}} - {{c2::Unix epoch}}	sqlite				"<pre><div>&nbsp;SELECT strftime('%some_arg', some_col) FROM example;</div>
+gets time from a timestamp col. Stands for string format time<br>
+–<br>
+Common strftime format specifiers in SQLite:
+
+    %Y - Year (4 digits)
+    %m - Month (2 digits)
+    %d - Day of the month (2 digits)
+    %H - Hour (24-hour format)
+    %M - Minute
+    %S - Second
+    %s - Unix timestamp (seconds since epoch)</pre>"	ToCards_03_04_25
+"tH*tC&/7?#"	TopicCloze	Active::ProgrammingGeneral::SQL	SQL does {{c1::int division}} if {{c2::both ops are ints}}	SQL				<pre>SQL does int division if both operands are ints</pre>	ToCards_03_04_25
+k4Kld,@Q[+	TopicCloze	Active::ProgrammingGeneral::SQL	"<div>any comparison involving <span class=""code"">{{c1::NULL}}</span> results in <span class=""code"">{{c3::NULL!c2}}</span>, not <span class=""code"">{{c2::TRUE or FALSE!c2}}</span>.<br></div>"	SQL				<pre>In SQL, NULL represents an unknown value, and any comparison involving NULL results in NULL, not TRUE or FALSE.</pre>	ToCards_03_04_25
+_Z<naAkfH	TopicCloze	Active::ProgrammingGeneral::SQL	To {{c1::autoincrement}} an int it must be a {{c2::primary key}}	SQL				"<pre>sql
+You cannot use autoincrement without the int being a primary key</pre>"	ToCards_03_09_25.odt
+vUsMU9vumV	TopicCloze	Active::ProgrammingGeneral::Python	{{c1::any()}} returns {{c2::True}} when an {{c3::ele of the<br>iterable}}&nbsp;{{c4::evals to True}}	py				"
+
+
+
+<pre class=""western"">python
+any() is a built-in Python function that returns True if at least one element in an iterable evaluates to True, otherwise it returns False.<br>
+<br>
+any(myStr in d for d in (a, b, c, d)) a,b,c,d are colections</pre>"	ToCards_03_09_25.odt
+h+W!.Ca4$i	TopicCloze	Active::ProgrammingGeneral::SQL	"<span class=""code"">PRAGMA {{c1::foreign_key_list}}(table_name);</span><br> <br>{{c2::id}} – {{c7::FK constraint ID}}<br>{{c3::seq}} – {{c11:: Seq order # of the fk contraint}}<br>{{c4::table}} – {{c8::Ref'd table}}<br>{{c5::from}} – {{c9::Col of this table}}<br>{{c6::to}} – {{c10::Ref'd col of foreign table}}"	sqlite				"<pre>PRAGMA foreign_key_list(table_name); <br>
+<br>
+<strong>id</strong> – Foreign key constraint ID 
+<strong>seq</strong> – Order of the column in the composite foreign key 
+<strong>table</strong> – The referenced table 
+<strong>from</strong> – The column in your table 
+<strong>to</strong> – The referenced column in the foreign table</pre>"	ToCards_03_09_25.odt
+fV`aYRL@N}	ExCloze	Active::LangGeneral	"""The man who runneth fast is my friend,""<br><br>{{c1::""who runneth fast""}} is the {{c2::relative clause}}.<br>{{c3::""runneth fast""}} is the {{c4::predicate}}"	"""The man who runneth fast is my friend,""
+
+    ""who runneth fast"" is the relative clause.
+    ""runneth fast"" is the predicate of the relative clause, as it describeth what ""who"" (the subject) doeth."	ToCards_01_19_25.odt				
+"O#u&Wr58^e"	TopicCloze	Active::ProgrammingGeneral::javascript	"<span class=""code"">{{c1::Array.some()}}</span> Ex.<br><br><span class=""code"">myArry.some((e) =&gt; { {{c2::(s/th that evals True/ False)}} });</span>"	JS				"Array.some() is a JavaScript method that tests whether at least one element in an array passes a given test function &lt;-<br><br> const validTypes = [""Noun"", ""Adjective"", ""Verb""]<br> validTypes.some((e) =&gt; { _type.includes(e) });<br>"	ToCards_02_02_25.odt
+LAHU;Gwbok	ExCloze	Active::ProgrammingGeneral::SQL	"<span class=""code"">{{c1::pragma_table_info()}}</span> is {{c2::sqlite}} specific"	pragma_table_info is sqlite specific	ToCards_03_04_25				
+t;*XA$F@tL	TopicCloze	Active::ProgrammingGeneral::CSS	"<span class=""code"">.card {
+{{c2::max-width: 26em;}}<br>}</span>
+<br><br>
+{{c1::Limits the width of the ele::Does?}}"	css				"<div>&nbsp;.card {</div>
+<div>font-family: arial;</div>
+<div>font-size: 20px;</div>
+<div>text-align: center;</div>
+<div><b>max-width: 26em;</b></div>
+<div>color: black;</div>
+<div>background-color: white;</div>
+<div>}</div>
+<div>To limit the width of the element</div>"	ToCards_01_17_25.odt
