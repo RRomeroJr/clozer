@@ -4,14 +4,19 @@ import shutil
 import glob
 import sys
 from typing import Callable
-chpnt = os.path.normpath("outputs/checkpoint")
-def g_checkpoint_dirs():
-    global chpnt
-    return glob.glob(chpnt + "-*")
-def g_checkpoint_dirs_sorted(desc = False):
-    global chpnt
-    dirs = g_checkpoint_dirs()
-    re_str = chpnt.replace('\\', '\\\\') + r"-(\d+)"
+# chpnt = os.path.normpath("outputs/checkpoint")
+def g_checkpoint_dirs(chpnts_dir="./outputs"):
+    chpnts_str = f"{chpnts_dir}/checkpoint-*"
+    res = glob.glob(chpnts_str)
+    for i in range(len(res)):
+        res[i] = res[i].replace("\\", "/")
+    return res
+def g_checkpoint_dirs_sorted(desc = False, chpnts_dir="./outputs"):
+    dirs = g_checkpoint_dirs(chpnts_dir=chpnts_dir)
+    print(dirs)
+    re_str = "{}/checkpoint".format(chpnts_dir.replace('\\', '/'))
+    re_str += r"-(\d+)"
+    print(re_str)
     pattern = re.compile(re_str)
     return sorted(dirs, key=lambda x : int(pattern.match(x)[1]), reverse=desc)
 
@@ -42,34 +47,34 @@ def delete_specific_directories():
                 print(f"Error deleting {dir_name}: {e}")
         else:
             print(f"Directory not found: {dir_name}")
-def find_checkpoint(inp: str| int = None, silent = False) -> dict[str, str | int] | None:
-    if inp == None:
-        return find_latest_checkpoint(silent = silent)
+def find_checkpoint(chpnt_num: str| int = None, silent = False, chpnts_dir = "./outputs") -> dict[str, str | int] | None:
+    if chpnt_num == None:
+        return find_latest_checkpoint(silent = silent, chpnts_dir=chpnts_dir)
     else:
-        return find_checkpoint_num(inp, silent = silent)
-def find_checkpoint_num(inp: str | int, silent = False) -> dict[str, str | int]:
-    if isinstance(inp, int):
-        chpnt_num = inp
+        return find_checkpoint_num(chpnt_num, silent = silent, chpnts_dir=chpnts_dir)
+def find_checkpoint_num(chpnt_num: str | int, silent = False, chpnts_dir = "./outputs") -> dict[str, str | int]:
+    if isinstance(chpnt_num, int):
+        chpnt_num = chpnt_num
     else:
         try:
-            chpnt_num = int(inp)
+            chpnt_num = int(chpnt_num)
         except Exception as e:
             raise Exception(f"couldn't cast {inp} to int") from e
     
-    chpnt_path = f"outputs/checkpoint-{chpnt_num}"
+    chpnt_path = f"{chpnts_dir}/checkpoint-{chpnt_num}"
     if os.path.exists(chpnt_path):
         chpnt = {"path": chpnt_path, "num": chpnt_num}
         if not silent: print(f"Returning checkpoint {chpnt['num']} at\n", chpnt["path"])
         return(chpnt)
     return None
-def find_latest_checkpoint(silent = False) -> dict[str, str | int]:
+def find_latest_checkpoint(silent = False, chpnts_dir= "./outputs") -> dict[str, str | int]:
     """
     Searches for checkpoint directories in ./outputs and returns the path to the latest one.
     
     Returns:
         str: Relative path to the latest checkpoint directory, or None if no checkpoints found.
     """
-    base_dir = "./outputs"
+    base_dir = chpnts_dir
     latest_num = -1
     latest_checkpoint_path = None
     

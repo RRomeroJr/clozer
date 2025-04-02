@@ -6,7 +6,7 @@ import json
 import pprint
 
 def g_log_history_objs():
-    chpnt_dirs = [us_helpers.g_checkpoint_dirs_sorted(desc=True)[0]]
+    chpnt_dirs = [us_helpers.g_checkpoint_dirs_sorted(desc=True, chpnts_dir="outputs/assigner")[0]]
     res = []
     for d in chpnt_dirs:
         with open(d + '\\trainer_state.json', 'r', encoding='UTF-8') as f:
