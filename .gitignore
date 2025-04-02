@@ -15,3 +15,6 @@ rrjr
 datasets/json
 datasets/parquet
 .ankivenv
+note_maker_before_src_training
+assigner
+ignore
