@@ -14,7 +14,8 @@ from data_helper_classes import ClassToDictEncoder, MsgExchange, MsgObj, Convers
 from rrjr.rrjr_fm import g_seq_filename, sp_open
 from rand_var import RandVar
 import string
-custom_dir = 'D:/DocumentsHDD/Coding_Scrap/python/ollama/clozer/nltk_data'  # Change this to your preferred path
+# custom_dir = 'D:/DocumentsHDD/Coding_Scrap/python/ollama/clozer/nltk_data'  # Change this to your preferred path
+custom_dir = '.venv\\nltk_data'  # Change this to your preferred path
 os.environ['NLTK_DATA'] = custom_dir
 
 def g_empty_exchange(system_prompt = None) -> MsgExchange:
@@ -699,7 +700,7 @@ def mk_screwed_up_convos(system_msg: MsgObj = None) -> list[Conversation]:
                     ,(random_unicode_string(unicode_str_length.roll(), random.choice(unicode_str_args)),)
                     ,random_html_tagger_args)
             ))
-        print(pformat(tuple(type(e) for e in str_gen_choices)))
+        # print(pformat(tuple(type(e) for e in str_gen_choices)))
         def _call(_choice: Tuple[Callable, Tuple, Dict]):
             try:
                 if len(_choice) == 3:
@@ -715,7 +716,7 @@ def mk_screwed_up_convos(system_msg: MsgObj = None) -> list[Conversation]:
         # mult_block_file_count.val = 3
         mult_block_file_count.roll()
         for i in range(mult_block_file_count.val):
-            print(i)
+            # print(i)
             # mult_block_count.val = 4
             mult_block_count.roll()
             ffile_str = ""
