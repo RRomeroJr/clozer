@@ -11,6 +11,7 @@ import sys
 from typing import Any, Dict, Iterable, List
 from finetune_sys_prompt import finetune_sys_prompt
 import pandas
+from anki_csv_reader import *
 from anki_helper_classes import _ClozeType, _NoteType, AnkiRow, TopicCloze, ExCloze
 from data_helper_classes import ClassToDictEncoder, MsgExchange, MsgObj, Conversation, RRJRDataset, RRJRDatasetDict
 from rrjr.rrjr_fm import g_seq_filename, sp_open
@@ -31,7 +32,8 @@ path = None
 notetypes = (TopicCloze, ExCloze)
 field_map = {}
 test_files  = {"ToCards_01_08_25.odt", "ToCards_1_10_25.odt", "ToCards_02_02_25.odt", "ToCards_02_22_25.odt", "ToCards_03_09_25.odt", "ToCards_01_18_25.odt"}
-omited_fields = {"input", "src_file", "guid", "deck"}
+omited_fields = {"src_file", "guid", "deck"}
+# omited_fields = {"input", "src_file", "guid", "deck"}
 dump_args = {"cls": ClassToDictEncoder, "indent": 2, "ensure_ascii": False}
 num_regex = re.compile(r"[0-9][0-9]*")
 # SYSTEM_MSG_OBJ = None
@@ -68,7 +70,7 @@ def mk_note_obj(row):
 
 def main():
     global NOTETYPE_COL, DECK_COL, GUID_COL, ID_COLUMNS, path, max_cols, col_map
-    path = 'training_set3_5.csv'
+    path = 'datasets/anki_exports/training_set3_5.csv'
     col_arg_regex = re.compile(r'#(\w+) column:(\d+)')
     startfrom = 0
     with open(path, newline='', encoding='utf-8') as csvfile:
@@ -159,7 +161,9 @@ def main():
                 print(f"Processing {fn} : {'train' if fn in unique_files_train else 'test'}")
                 # split["conversations"].append([])
                 ffile_str = mk_fake_file_str(note_objs)
-                resp_objs = [{field: val for field, val in note.__dict__.items() if field not in omited_fields} for note in note_objs]
+                resp_objs = []
+
+                resp_objs = [{field: val for field, val in note.g_dict_in_row_order().items() if field not in omited_fields} for note in note_objs]
 
                 # just to preview output
                 exchange = MsgExchange(MsgObj("user", ffile_str), MsgObj("assistant", resp_objs), SYSTEM_MSG_OBJ)
@@ -196,7 +200,7 @@ def main():
                 print([fn] + [len(ns) for ns in note_split], f"{len(note_objs)} note(s) and {len(input_index_memo)} unique input(s)")
                 for count, ns in enumerate(note_split, start=1):
                     ffile_str = mk_fake_file_str(ns)
-                    resp_objs = [{field: val for field, val in note.__dict__.items() if field not in omited_fields} for note in ns]
+                    resp_objs = [{field: val for field, val in note.g_dict_in_row_order().items() if field not in omited_fields} for note in ns]
                     exchange = MsgExchange(MsgObj("user", ffile_str), MsgObj("assistant", resp_objs), system = SYSTEM_MSG_OBJ)
                     convo = Conversation([exchange]) # still only 1 exchange per convo to save context
                     

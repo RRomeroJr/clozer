@@ -15,7 +15,7 @@ class _NoteType(AnkiRow):
     def __repr__(self):
         return self.__class__.__name__ + "()"
     @classmethod
-    def to_dict_to_list(cls, inp_dict: dict):
+    def to_dict_to_list(cls, inp_dict: dict) -> list[str]:
         res = [""] * len(cls.noteFields)
         print(inp_dict)
         for i, field in enumerate(cls.noteFields):
@@ -24,6 +24,19 @@ class _NoteType(AnkiRow):
             if field in inp_dict:
                 print("inp_dict field found:", field)
                 res[i] = inp_dict[field]
+        return res
+    def g_dict_in_row_order(self) -> dict[str]:
+        id_fields = ("guid", "notetype", "deck")
+        res = {}
+        for field in id_fields:
+            if field in self.__dict__:
+                res[field] = self.__dict__[field]
+        for_last = ("input", "src_file")
+        for field in self.__class__.noteFields:
+            if field not in res and field not in for_last:
+                res[field] = self.__dict__[field]
+        for field in for_last:
+                res[field] = self.__dict__[field]
         return res
 class _ClozeType(_NoteType):
     def __init__(self, notetype, Text, guid = None, deck = None, input = None, scr_file = None):
