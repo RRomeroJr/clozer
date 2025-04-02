@@ -1,10 +1,11 @@
 from us_helpers import delete_specific_directories, find_checkpoint
 delete_specific_directories()
 import sys
-if len(sys.argv) >= 2:
-    chpnt = find_checkpoint(sys.argv[1])
-else:
-    chpnt = find_checkpoint()
+chpnt = find_checkpoint(
+    chpnt_num=sys.argv[1] if len(sys.argv) > 2 else None, 
+    chpnts_dir="outputs/assigner"
+)
+
 import os
 from unsloth import FastLanguageModel, is_bfloat16_supported
 import torch
@@ -23,7 +24,11 @@ from unsloth import UnslothTrainer, UnslothTrainingArguments
 from finetune_sys_prompt import finetune_sys_prompt
 import json
 from transformers.models.llama.tokenization_llama_fast import LlamaTokenizerFast
+from anki_csv_reader import *
 colorama.init()
+
+
+
 model: str | nn.Module | PreTrainedModel = None
 
 model, tokenizer = FastLanguageModel.from_pretrained(
@@ -60,9 +65,7 @@ todays_str = None
 with open(todays_notes_path, 'r', encoding='utf-8') as f:
     todays_str = f.read()
 
-
-t1 = "ch changes the dir in linux"
-t2 = """AI
+cmd_dict = {"/t1": "ch changes the dir in linux", "/t2": """AI
 
 the number of examples is the.. number of examples
 
@@ -84,8 +87,8 @@ same as
 result = [] 
 for outer_var in outer_iterable:
  for inner_var in inner_iterable:
-  result.append(expression)"""
-t3 = """AI
+  result.append(expression)""",
+"/t3":"""AI
 
 the number of examples is the.. number of examples
 
@@ -93,7 +96,17 @@ the batch size is.. how many examples to process at once
 
 the iteration or learning step is..  a completed batch
 
-An epoch is.. the completion of all batches. Full pass"""
+An epoch is.. the completion of all batches. Full pass""",
+"/today": todays_str}
+
+acr = AnkiCsvReader("C:/Users/Richie/AppData/Roaming/Anki2/User 1/collection.anki2", "ToCards_03_21_25_TopicCloze.csv")
+acr.fast_forward_to_data()
+omitted_fields = ("deck",)
+for i, r in enumerate(acr, start=1):
+    d = r.to_dict()
+    for o in omitted_fields: del d[o]
+    cmd_dict[f"/a{i}"] = json.dumps(d, indent=2, ensure_ascii=False)
+
 def prompt_model(inp):
     messages = [
             {"role": "system", "content": finetune_sys_prompt},
@@ -108,6 +121,9 @@ def prompt_model(inp):
     ).to("cuda")
 
     not_sure_what_do_this = model.generate(input_ids = inputs, pad_token_id=tokenizer.eos_token_id, streamer = text_collector, use_cache = True)
+    out = text_collector.text
+    text_collector.text = ""
+    return out
     
 if __name__ == "__main__":
     while True:
@@ -116,38 +132,29 @@ if __name__ == "__main__":
         inp = ""
         while True:
             line = input("")
-            if line == "/today" or "/t" or line == "":
-                line = todays_str
-                break
-            elif line == "/t1":
-                line = t1
-                break
-            elif line == "/t2":
-                line = t2
-                break
-            elif line == "/t3":
-                line = t3
+            if line in cmd_dict:
+                inp = cmd_dict[line]
                 break
             if line[-2:] == "//":
                 inp += line[:-2]
                 break
             inp += line + '\n'
         
-        prompt_model(inp)
+        res = prompt_model(inp)
         print("===========")
         
-        m = re.search(pat, text_collector.text)
+        m = re.search(pat, res)
         if not m:
             raise Exception("couldn't find assistant output")
-        try:
-            loaded = json.loads(m[1])
-            load_dump = json.dumps(loaded, indent=2, ensure_ascii=False)
-            print("Load, output:")
-            print(f"type: {type(loaded)},", load_dump)
-            print()
-        except Exception as e:
-            print(sys.exc_info())
-            print("could not load output as json")
-            print()
-            print(m[1])
+        # try:
+        #     loaded = json.loads(m[1])
+        #     load_dump = json.dumps(loaded, indent=2, ensure_ascii=False)
+        #     print("Load, output:")
+        #     print(f"type: {type(loaded)},", load_dump)
+        #     print()
+        # except Exception as e:
+        #     print(sys.exc_info())
+        #     print("could not load output as json")
+        #     print()
+        #     print(m[1])
         # we are not dead
