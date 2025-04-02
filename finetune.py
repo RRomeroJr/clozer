@@ -19,7 +19,7 @@ import colorama
 from colorama import Fore, Back, Style
 from peft.peft_model import PeftModelForCausalLM
 from unsloth import UnslothTrainer, UnslothTrainingArguments
-import data_prep4
+import data_prep
 colorama.init()
 MAX_SEQ_LENGTH = 8000
 model: str | nn.Module | PreTrainedModel = None
@@ -55,8 +55,8 @@ GPUS = 1 # maybe one day :(
 TOTAL_BATCH_SIZE = GPUS * BATCH_SIZE * GRADIENT_ACC_STEPS
 print()
 for i in range(ITERS):
-    data_prep4.main()
-    origdataset = dataset = load_dataset('parquet', 
+    data_prep.main()
+    origdataset = load_dataset('parquet', 
                         data_files={
                             'train': 'attempt_3_5_train.parquet',
                             'test': 'attempt_3_5_test.parquet'
