@@ -11,6 +11,7 @@ import re
 import sys
 from typing import Any, Dict, Iterable, Iterator, List
 from typing import IO
+import warnings
 
 import anki.collection
 from finetune_sys_prompt import finetune_sys_prompt
@@ -156,22 +157,22 @@ nt.id = f.ntid Where nt.name = '{nt_name}'"""
             raise
 @dataclass
 class AnkiDataRow:
-    items: list
+    items: list[str]
     acr: AnkiCsvReader
     iter_index: int = field(default=0, init=False)
 
     def __post_init__(self):
         try:
             self.notetype: str | None = self.items[self.acr.notetype_col]
-        except (KeyError, TypeError):
+        except (KeyError, IndexError, TypeError):
             self.notetype = None
         try:
             self.guid: str | None = self.items[self.acr.guid_col]
-        except (KeyError, TypeError):
+        except (KeyError, IndexError, TypeError):
             self.guid = None
         try:
-            self.deck: str | None = self.items[self.acr.guid_col]
-        except (KeyError, TypeError):
+            self.deck: str | None = self.items[self.acr.deck_col]
+        except (KeyError, IndexError, TypeError):
             self.deck = None
         
     def tags(self):
@@ -189,7 +190,22 @@ class AnkiDataRow:
         # Reset the index and return self as the iterator
         self.iter_index = 0
         return self
-
+    def get_col(self, inp: str, default = None):
+        if self.acr == None:
+            warnings.warn(f"{self.__class__.__name__}.get_col called on a row with no associated AnkiCsvReader. returning default")
+            return default
+        if inp in self.acr.fields_dict[self.items[self.acr.notetype_col]]:
+            return self.acr.fields_dict[self.items[self.acr.notetype_col]][inp]
+        else:
+            return default
+    def get(self, inp: str, default = None):
+        if self.acr == None:
+            warnings.warn(f"{self.__class__.__name__}.get called on a row with no associated AnkiCsvReader. returning default")
+            return default
+        if inp in self.acr.fields_dict[self.items[self.acr.notetype_col]]:
+            return self.items[self.acr.fields_dict[self.items[self.acr.notetype_col]][inp]]
+        else:
+            return default
     def __next__(self):
         if self.iter_index < len(self.items):
             result = self.items[self.iter_index]
