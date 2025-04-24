@@ -1,0 +1,57 @@
+4/8/25
+I'm realizing that in anki when you specify that you want to export including
+html it exports all fields as html and doesn't give you an option to chose
+
+That means in all of my fields things like &nbsp and &gt are in most of my
+fields.
+
+I could correct it myself.. But when importing html anki will correct things to make
+it valid. closing tags that it thinks should be closed.
+
+If I import some xml as html anki might do weird things with the tags
+
+Not sure I should do that.
+--
+
+I could try to convert it. to html.
+
+I could look for a document writting program which uses html under the hood so when I
+extract the contents anki will be happy with that.
+--
+
+whatever I decide I think that I need to export twice. Once as html then another as plain
+text
+--
+I have no way to knowing if the src field is in html or not. Which was fine up until now
+because it was was either html or some plain text. But now it could also be xml
+
+additionally I'm realizing that alot of the code stuff is affected like x >= y -> x &gt= y
+--
+
+Maybe I could import all src as a html text string. including actual html. Then when I export
+I designate src as a text field, it converts all the html weirdness to a normal string and I
+now have real html again
+
+I can't copy paste that stuff tho at least I don't know how to do that right now. I paste w/
+syling or without but not the actual html as a string.
+
+I should ask claude what the html special chars are
+--
+
+I should html encode all fields that don't need syling. then when I load the dataset I decode
+it. Or maybe better yet I export as html then create a copy decoding all fields I don't want
+to be html.
+
+4/18/25
+So my venv seemly still works even after clearing out my global
+python installation.
+
+I should move my venv and try to recreate it so I know what steps
+to put on git hub
+
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+you'll need that^^
+--
+I moved the venv out going to try to recreate. Just remember the gguf won't
+work without my changes with vcpkg and the source changes
