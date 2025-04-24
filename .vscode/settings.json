@@ -6,4 +6,5 @@
             "args": ["-ExecutionPolicy", "Bypass"]
         }
     }
+    // "python.terminal.activateEnvironment": false
 }
