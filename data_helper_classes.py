@@ -1,4 +1,5 @@
 import json
+from pprint import pformat
 import re
 from typing import Dict, List
 class EncoderHelperBase():
@@ -22,7 +23,15 @@ class MsgObj(EncoderHelperBase):
         self.content = content
         pass
     def __repr__(self):
-        return self.__class__.__name__ + "()"
+        indent = 4
+
+        return self.__class__.__name__ + "(" \
+        "\n"+ " " * indent + f"role: {self.role}" + \
+        "\n" + " " * indent + f"content: " +\
+        ("\n" + repr(self.content)).replace('\n', '\n' + ' ' * indent * 2) + \
+        "\n)"
+
+# )""".format(self.role, (("\n" + " " * indent * 2) if isinstance(self.content, list) or isinstance(self.content, dict) else "") + pformat(self.content).replace('\n', '\n' + ' ' * indent * 2))
 class MsgExchange():
     def __init__(self, user: MsgObj, assistant: MsgObj, system: MsgObj = None):
         self.system = system
@@ -32,7 +41,16 @@ class MsgExchange():
     def g_role(self, key) -> MsgObj:
         return self.__dict__.get(key, None)
     def __repr__(self):
-        return self.__class__.__name__ + "()"
+        indent = 4
+        r = self.__class__.__name__ + "(\n"
+        if self.system:
+            r += " " * indent + repr(self.system).replace("\n", "\n" + " " * indent) + "\n"
+        if self.user:
+            r += " " * indent + repr(self.user).replace("\n", "\n" + " " * indent) + "\n"
+        if self.assistant:
+            r += " " * indent + repr(self.assistant).replace("\n", "\n" + " " * indent) + "\n"
+        return r + ")"
+
 class Conversation():
     def __init__(self, exchanges: MsgExchange | list[MsgExchange] = None):
         
@@ -45,7 +63,10 @@ class Conversation():
         else:
             raise Exception("Conversation.exchanges must be MsgExchange | list[MsgExchange]")
     def __repr__(self):
-        return self.__class__.__name__ + "()"
+        return self.__class__.__name__ + \
+"""(
+    {}
+)""".format('\n'.join(repr(e).replace('\n', '\n    ') for e in self.exchanges))
 class RRJRDataset(EncoderHelperBase):
     def __init__(self, conversations: list[Conversation] = None):
         if conversations == None:
