@@ -299,10 +299,10 @@ def abbrev(inp: str, default: Union[str, None] = None, pref: str = "pref", chanc
 
 if __name__ == "__main__":
     # Test the abbrev function
-    print(abbrev("javascript", pref="random"))  # Should print "js"
-    print(abbrev("Javascript", pref="least"))  # Should print randomly js or JS
+    print(abbrev("javascript"))  # Should print "js"
+    print(abbrev("Javascript", pref="least"))  # Should print "JS"
     print(abbrev("JAVASCRIPT"))  # Should print "JS"
     print(abbrev("python"))      # Should print "py"
     print(abbrev("unknown"))     # Should print "unknown"
-    print(abbrev("unknown", "not found"))  # Should print "not found"
-    print(abbrev("something", pref="random"))  # Should print "s/t" (least preferred)
+    print(abbrev("unknown", default="not found"))  # Should print "not found"
+    print(abbrev("something", pref="random"))  # Should print "s/t" (random pref but there is only one of them)
