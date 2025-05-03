@@ -27,7 +27,7 @@ replaced with equivilants using shutil
 --
 
 those commands are looking for llama exe-s in the bin folder but
-my setup atleast has them in a bin/Release folder
+my setup at least has them in a bin/Release folder
 for file in glob.glob("llama.cpp/build/bin/**/llama-*", recursive=True)
 now trying recursively to look look for files in the bin folder
 and any sub-dirs
