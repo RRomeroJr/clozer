@@ -47,7 +47,7 @@ class AnkiCsvReader:
     reader_offset: int = field(default=None, init=False)
     id_cols_dict: dict[str, int] = field(default=None, init=False)
     fields_dict: dict[str, dict[str, int]] = field(default=None, init=False)
-    tags_col_start: int = field(default=None, init=False)
+    tags_start: int = field(default=None, init=False)
     data_start: int = field(default=None, init=False)
     def __post_init__(self):
         self.anki_collection = AnkiCollection(self.anki_collection_path)
@@ -78,10 +78,13 @@ class AnkiCsvReader:
                 elif search[1] == "guid":
                     print(search[0])
                     self.guid_col = int(search[2]) - 1
+                elif search[1] == "tags":
+                    print(search[0])
+                    self.tags_start = int(search[2]) - 1
                 continue
             else:
                 self.reader_offset = self.reader.line_num
-                _id_cols = {"guid": self.guid_col, "notetype": self.notetype_col, "deck": self.deck_col}
+                _id_cols = {"guid": self.guid_col, "notetype": self.notetype_col, "deck": self.deck_col, 'tags_start': self.tags_start}
                 self.id_cols_dict = {k: v for k, v in _id_cols.items() if v != None}
                 self.data_start = len(self.id_cols_dict)
                 break
@@ -131,8 +134,8 @@ nt.id = f.ntid Where nt.name = '{nt_name}'"""
         
         if len(row) < expected_len:
             raise RowLengthError(f"line num {self.reader.line_num}, notetype {row[self.notetype_col]}, less than expected {expected_len} cols found {len(row)}")
-        if self.tags_col_start != None:
-            end = self.tags_col_start - 1
+        if self.tags_start != None:
+            end = self.tags_start - 1
         else:
             end = len(row)
         
@@ -146,20 +149,21 @@ nt.id = f.ntid Where nt.name = '{nt_name}'"""
             for i, f in enumerate(fields, start=len(self.id_cols_dict)):
                 new_dict[f] = i
             self.fields_dict[row[self.notetype_col]] = new_dict
-
     def __iter__(self):
+        self.i_count = -1
         return self
     def __next__(self):
         try:
             items = next(self.reader)
-            return AnkiDataRow(items, self)
+            self.i_count += 1
+            return AnkiDataRow(items, self, self.i_count)
         except StopIteration:
             raise
 @dataclass
 class AnkiDataRow:
     items: list[str]
     acr: AnkiCsvReader
-    iter_index: int = field(default=0, init=False)
+    iter_index: int = field(default=0, init=True)
 
     def __post_init__(self):
         try:
@@ -174,15 +178,19 @@ class AnkiDataRow:
             self.deck: str | None = self.items[self.acr.deck_col]
         except (KeyError, IndexError, TypeError):
             self.deck = None
-        
-    def tags(self):
-        """WARNING NOT YET IMPLEMENTED"""
-        print("TAGS IS NYI!!!")
-        if self.id_cols_dict["tags_start"]:
-            raise ValueError("id_col_dict['tag_start'] is None")
-        return self.items[len(self.acr.tags_col_start)]
+    def get_note_id(self):
+        "note id's are different from guids and the double as timestamps for the notes creation"
+        if self.guid == None:
+            raise RuntimeError(f"called get_note_id but {self.__class__.__name__} doesn't know it's guid. self.guid == {self.guid}")
+        query = f"""select id from notes where guid = '{self.guid}'"""
+        return self.acr.anki_collection.db.execute(query)[0][0]
+    def tags(self) -> list[str] | None:
+        try:
+            return self.items[self.acr.tags_start:]
+        except (KeyError, IndexError, TypeError):
+            return None
     def data(self):
-        return self.items[len(self.acr.id_cols_dict):]
+        return self.items[len(self.acr.id_cols_dict)-1:]
     def to_dict(self) -> dict[str, str]:
         return {field: self.items[index] for field, index in self.acr.fields_dict[self.items[self.acr.notetype_col]].items()}
 
