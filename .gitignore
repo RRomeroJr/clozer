@@ -19,3 +19,4 @@ note_maker_before_src_training
 assigner
 ignore
 datasets/anki_exports
+.vscode
