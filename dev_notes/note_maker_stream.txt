@@ -55,3 +55,18 @@ you'll need that^^
 --
 I moved the venv out going to try to recreate. Just remember the gguf won't
 work without my changes with vcpkg and the source changes
+
+4/24/25
+I need to implement tags because I'm adding cards for a lot of different
+domains right now
+
+anki warns you to not make to many subdecks but instead tag notes instead.
+
+Challenges:
+- I would need need to train deck assigner to correctly tag notes
+ as well as assign the decks.. Seems like a lot of effort for little gain right now
+ in my setup I have AI_DEFAULT and Programming::General as fail safes. worse comes
+ to worse I fix the decks myself.
+
+Welp I updated acr to work with tags anyway. So I guess I have that if I still want
+to do this.
