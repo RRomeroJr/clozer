@@ -10,7 +10,6 @@ lora_model
 fake_files
 attempt[0-9]*
 ToCards_*
-rrjr
 *.pyc
 datasets/json
 datasets/parquet
