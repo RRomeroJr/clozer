@@ -11,16 +11,17 @@ import abbrevs
 from finetune_sys_prompt import finetune_sys_prompt
 from anki_helper_classes import _ClozeType, _NoteType, AnkiRow, TopicCloze, ExCloze
 from data_helper_classes import ClassToDictEncoder, MsgExchange, MsgObj, Conversation, RRJRDataset, RRJRDatasetDict
-from rrjr.rrjr_fm import g_seq_filename, sp_open
 from rand_var import RandVar
 import string
 # custom_dir = 'D:/DocumentsHDD/Coding_Scrap/python/ollama/clozer/nltk_data'  # Change this to your preferred path
 custom_dir = '.venv\\nltk_data'  # Change this to your preferred path
 os.environ['NLTK_DATA'] = custom_dir
+empty_resp = []
+# empty_resp = {"anki_notes": [], "sources":{}}
 
 def g_empty_exchange(system_prompt = None) -> MsgExchange:
     user = MsgObj("user", "")
-    assistant = MsgObj("assistant", [])
+    assistant = MsgObj("assistant", empty_resp)
     return MsgExchange(user, assistant, system_prompt if system_prompt else None)
 def g_empty_convo(system_prompt = None) -> Conversation:
     return Conversation(g_empty_exchange(system_prompt))
@@ -590,44 +591,49 @@ def g_random_garbage():
         else:
             out_str = random_html_tags(max_count * 2, valid_html=False)
     # tag up or not randomly
+    
+    max_length = random.randint(25, 404)
+    random_html_tagger_args = {
+        "regular_tags": ['div', 'span', 'pre', 'b', 'strong', 'em'], # these will be used by sub-strs
+        "container_tags": ["span", "div", "pre", "span_code"], # these could wrap the whole return str
+        "special_tags": {"span_code": "<span class=\"code\">"}, # extra tags to add
+        "bias": {"span_code": 0.05}, # making the special tag slightly more likely to appear
+    }
     if random.random() <= 0.5:
-        max_length = random.randint(25, 404)
-        random_html_tagger_args = {
-            "regular_tags": ['div', 'span', 'pre', 'b', 'strong', 'em'], # these will be used by sub-strs
-            "container_tags": ["span", "div", "pre", "span_code"], # these could wrap the whole return str
-            "special_tags": {"span_code": "<span class=\"code\">"}, # extra tags to add
-            "bias": {"span_code": 0.05}, # making the special tag slightly more likely to appear
-        }
         out_str = random_html_tagger(out_str, **random_html_tagger_args)
     return out_str
 
 def mk_screwed_up_convos(system_msg: MsgObj = None) -> list[Conversation]:
     """returns a list of conversations with werid inputs that should be ignored during testing"""
     from vagueries.vagueries import vagueries
-
     to_return = []
     # just random html both valid and invalid
     rand_html_min, rand_html_max = 15, 30
     html_count_invalid = random.randint(rand_html_min, rand_html_max)
     html_count = RandVar(15, 30)
-    if True: # Only invalid html
+    master_chance = 0.7
+    # master_chance = 0.0
+    # if True: # Only invalid html
+    invalid_ignore_master = False
+    if random.random() <= master_chance if not invalid_ignore_master else 0.0: # Only invalid html
         to_return.append(Conversation(
             MsgExchange(
                 MsgObj("user", random_html_tags(count = html_count.roll(), valid_html=False)),
-                MsgObj("assistant", []),
+                MsgObj("assistant", empty_resp),
                 system_msg
             )
         ))
     html_count_valid = random.randint(rand_html_min, rand_html_max)
-    if True: # generate with valid html
+    generate_w_valid_html_ignore_master = False
+    if random.random() <= master_chance if not invalid_ignore_master else 0.0: # generate with valid html
         to_return.append(Conversation(
             MsgExchange(
                 MsgObj("user", random_html_tags(count = html_count.roll() // 2, valid_html=True)),
-                MsgObj("assistant", []),
+                MsgObj("assistant", empty_resp),
                 system_msg
             )
         ))
-
+    
     # random strings. various random unicode strings.
     unicode_str_args = (None, "roman", "nums", "special", "whitespace") # Modify as needed
     # unicode_str_args = ((),) # or uncomment to disable <---------------------
@@ -637,82 +643,95 @@ def mk_screwed_up_convos(system_msg: MsgObj = None) -> list[Conversation]:
         "bias": {"span_code": 0.05},
     }
     unicode_str_length = RandVar(16, 133)
-    for a in unicode_str_args:
-        for step in range(1, 3):
-            res_str = None
-            if step == 1:# just the string itself
-                res_str = random_unicode_string(unicode_str_length.roll(), a)
-            elif step == 2: # with random tags
-                res_str = random_html_tagger(
-                    random_unicode_string(unicode_str_length.roll(), a),
-                    **random_html_tagger_args
-                )
-            to_return.append(Conversation(MsgExchange(
-                MsgObj("user", res_str),
-                MsgObj("assistant", []),
-                system_msg
-            )))
+    random_str_ignore_master = False
+    if random.random() <= master_chance if not random_str_ignore_master else 0.0:
+        for a in unicode_str_args:
+            for step in range(1, 3):
+                res_str = None
+                if step == 1:# just the string itself
+                    res_str = random_unicode_string(unicode_str_length.roll(), a)
+                elif step == 2: # with random tags
+                    res_str = random_html_tagger(
+                        random_unicode_string(unicode_str_length.roll(), a),
+                        **random_html_tagger_args
+                    )
+                to_return.append(Conversation(MsgExchange(
+                    MsgObj("user", res_str),
+                    MsgObj("assistant", empty_resp),
+                    system_msg
+                )))
     # similar thing but with jsut random words
     count_rand_words_min, count_rand_words_max = 8, 77
     count_rand_words = RandVar(8, 77)
-    if True: # just the string itself
+    random_words_ignore_master = False
+    if random.random() <= master_chance if not random_words_ignore_master else 0.0:
         res_str = g_random_words(count_rand_words.roll())
-    if True: # with random tags
+        to_return.append(Conversation(MsgExchange(
+            MsgObj("user", res_str),
+            MsgObj("assistant", empty_resp),
+            system_msg
+        )))
+    r_words_w_tags_ignore_master = False
+    if random.random() <= master_chance if not r_words_w_tags_ignore_master else 0.0: # with random tags
         res_str = random_html_tagger(
             g_random_words(count_rand_words.roll()),
             **random_html_tagger_args
         )
         to_return.append(Conversation(MsgExchange(
             MsgObj("user", res_str),
-            MsgObj("assistant", []),
+            MsgObj("assistant", empty_resp),
             system_msg
         )))
-    if True: # the empty convo
+    empty_convo_ignore_master = False
+    if random.random() <= master_chance if not empty_convo_ignore_master else 0.0: # the empty convo
         to_return.append(g_empty_convo())
-    if True:
+    adj_vaguery_ignore_master = False
+    if random.random() <= master_chance if not adj_vaguery_ignore_master else 0.0:
         to_return.append(Conversation(MsgExchange(
             MsgObj("user", g_adjusted_vaguery()),
-            MsgObj("assistant", []),
+            MsgObj("assistant", empty_resp),
             system_msg
         )))
     # mult-block inputs
     # options
-    if True:
-        mult_block_file_count = RandVar(0, 4, val = 3)
-        mult_block_count = RandVar(1, 10, val=5)
-        str_gen_choices: List[Tuple[Callable, Tuple, Dict]] = [
-            (random_html_tags
-                ,(html_count.roll(),)
-                ,{"valid_html": False})
-            ,(random_html_tags
-                ,(html_count.roll() // 2,)
-                ,{"valid_html": True})
-            ,(g_random_words, (count_rand_words.roll(),))
-            ,(random_html_tagger, (g_random_words(count_rand_words.roll()),), random_html_tagger_args)
-            ,(lambda: "",)
-            ,(g_adjusted_vaguery,)
-        ]
-        if True and len(unicode_set_args) > 0:
-            str_gen_choices.extend((
-                (random_unicode_string
-                    ,(unicode_str_length.roll(), random.choice(unicode_str_args)))
-                ,(random_html_tagger
-                    ,(random_unicode_string(unicode_str_length.roll(), random.choice(unicode_str_args)),)
-                    ,random_html_tagger_args)
-            ))
-        # print(pformat(tuple(type(e) for e in str_gen_choices)))
-        def _call(_choice: Tuple[Callable, Tuple, Dict]):
-            try:
-                if len(_choice) == 3:
-                    return _choice[0](*_choice[1], **_choice[2])
-                elif len(_choice) == 2:
-                    return _choice[0](*_choice[1])
-                elif len(_choice) == 1:
-                    return _choice[0]()
-                else:
-                    raise Exception(f"_choice has too many elements {len(_choice)}\n  {_choice}")
-            except Exception as e:
-                raise Exception(f"error occured trying to call _choice\n  {_choice}")
+    
+    mult_block_file_count = RandVar(1, 4, val = 3)
+    mult_block_count = RandVar(1, 10, val=5)
+    str_gen_choices: List[Tuple[Callable, Tuple, Dict]] = [
+        (random_html_tags
+            ,(html_count.roll(),)
+            ,{"valid_html": False})
+        ,(random_html_tags
+            ,(html_count.roll() // 2,)
+            ,{"valid_html": True})
+        ,(g_random_words, (count_rand_words.roll(),))
+        ,(random_html_tagger, (g_random_words(count_rand_words.roll()),), random_html_tagger_args)
+        ,(lambda: "",)
+        ,(g_adjusted_vaguery,)
+    ]
+    if True and len(unicode_set_args) > 0:
+        str_gen_choices.extend((
+            (random_unicode_string
+                ,(unicode_str_length.roll(), random.choice(unicode_str_args)))
+            ,(random_html_tagger
+                ,(random_unicode_string(unicode_str_length.roll(), random.choice(unicode_str_args)),)
+                ,random_html_tagger_args)
+        ))
+    # print(pformat(tuple(type(e) for e in str_gen_choices)))
+    def _call(_choice: Tuple[Callable, Tuple, Dict]):
+        try:
+            if len(_choice) == 3:
+                return _choice[0](*_choice[1], **_choice[2])
+            elif len(_choice) == 2:
+                return _choice[0](*_choice[1])
+            elif len(_choice) == 1:
+                return _choice[0]()
+            else:
+                raise Exception(f"_choice has too many elements {len(_choice)}\n  {_choice}")
+        except Exception as e:
+            raise Exception(f"error occured trying to call _choice\n  {_choice}")
+    multi_block_ignore_master = False
+    if random.random() <= master_chance if not multi_block_ignore_master else 0.0:
         # mult_block_file_count.val = 3
         mult_block_file_count.roll()
         for i in range(mult_block_file_count.val):
@@ -740,10 +759,10 @@ def mk_screwed_up_convos(system_msg: MsgObj = None) -> list[Conversation]:
                     ffile_str += f"\n" * random.randint(1,2)
             to_return.append(Conversation(MsgExchange(
                 MsgObj("user", ffile_str),
-                MsgObj("assistant", []),
+                MsgObj("assistant", empty_resp),
                 system_msg
             )))
-        
+    print("mk_screwed_up_convos to_return len", len(to_return))
     return to_return
 
 def g_random_sparator():
@@ -761,14 +780,14 @@ def g_screwed_up_convos_old(system_msg: MsgObj = None) -> list[Conversation]:
     to_return.append(Conversation(
         MsgExchange(
             MsgObj("user", random_html_tags(count = html_count_invalid, valid_html=False)),
-            MsgObj("assistant", []),
+            MsgObj("assistant", empty_resp),
             system_msg
         )
     ))
     to_return.append(Conversation(
         MsgExchange(
             MsgObj("user", random_html_tags(count = html_count_valid // 2, valid_html=True)),
-            MsgObj("assistant", []),
+            MsgObj("assistant", empty_resp),
             system_msg
         )
     ))
@@ -793,7 +812,7 @@ def g_screwed_up_convos_old(system_msg: MsgObj = None) -> list[Conversation]:
                 )
             to_return.append(Conversation(MsgExchange(
                 MsgObj("user", res_str),
-                MsgObj("assistant", []),
+                MsgObj("assistant", empty_resp),
                 system_msg
             )))
     # similar thing but with jsut random words
@@ -810,7 +829,7 @@ def g_screwed_up_convos_old(system_msg: MsgObj = None) -> list[Conversation]:
                 )
             to_return.append(Conversation(MsgExchange(
                 MsgObj("user", res_str),
-                MsgObj("assistant", []),
+                MsgObj("assistant", empty_resp),
                 system_msg
             )))
     # the empty convo
