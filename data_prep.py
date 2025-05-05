@@ -1,5 +1,6 @@
 import csv
 import _csv
+import html
 import math
 import os
 import pprint
@@ -9,16 +10,17 @@ import random
 import re
 import sys
 from typing import Any, Dict, Iterable, List
-from finetune_sys_prompt import finetune_sys_prompt
+from finetune_sys_prompt import *
 import pandas
 from anki_csv_reader import *
 from anki_helper_classes import _ClozeType, _NoteType, AnkiRow, TopicCloze, ExCloze
 from data_helper_classes import ClassToDictEncoder, MsgExchange, MsgObj, Conversation, RRJRDataset, RRJRDatasetDict
-from rrjr.rrjr_fm import g_seq_filename, sp_open
 from data_prep_funcs import *
 # import pandas
 
-
+seed_start = random.randint(-2147483648, 2147483647)
+# seed_start = 2066243199
+random.seed(seed_start)
 SYSTEM = 0
 USER = 1
 ASSISTANT = 2
@@ -30,14 +32,15 @@ max_cols = None
 col_map: Dict[str, Dict[str, int]] = None
 path = None
 notetypes = (TopicCloze, ExCloze)
-field_map = {}
+field_map: dict[str, dict[str,int]] = {}
 test_files  = {"ToCards_01_08_25.odt", "ToCards_1_10_25.odt", "ToCards_02_02_25.odt", "ToCards_02_22_25.odt", "ToCards_03_09_25.odt", "ToCards_01_18_25.odt"}
-omited_fields = {"src_file", "guid", "deck"}
-# omited_fields = {"input", "src_file", "guid", "deck"}
+omitted_fields = {"src", "src_file", "guid", "deck"}
+# omitted_fields = {"src", "src_file", "guid", "deck"}
 dump_args = {"cls": ClassToDictEncoder, "indent": 2, "ensure_ascii": False}
 num_regex = re.compile(r"[0-9][0-9]*")
 # SYSTEM_MSG_OBJ = None
 SYSTEM_MSG_OBJ = MsgObj("system", finetune_sys_prompt)
+# SYSTEM_MSG_OBJ = None
 def scroll():
     scroll_amt = os.get_terminal_size().lines -1
     print("\n" * scroll_amt + f"\033[{scroll_amt}A", end='')
@@ -70,7 +73,7 @@ def mk_note_obj(row):
 
 def main():
     global NOTETYPE_COL, DECK_COL, GUID_COL, ID_COLUMNS, path, max_cols, col_map
-    path = 'datasets/anki_exports/training_set3_5.csv'
+    path = 'datasets/anki_exports/training_set5.csv'
     col_arg_regex = re.compile(r'#(\w+) column:(\d+)')
     startfrom = 0
     with open(path, newline='', encoding='utf-8') as csvfile:
@@ -114,9 +117,11 @@ def main():
     unique_files: dict[str, list[_NoteType]] = {}
     unique_files_train: dict[str, list[_NoteType]] = {}
     unique_files_test: dict[str, list[_NoteType]] = {}
+    should_unescape_fields = {"src", "src_file"}
     print(f"max_cols is {max_cols}")
     max_rows = -1
     include_system_prompt = False
+    for_llm = {}
     with open(path, newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile, delimiter='\t')
         for _ in reader:
@@ -126,6 +131,15 @@ def main():
                 break
         print('fast forward complete')
         for row in reader:
+            """I'm exporting as html from anki but I can't select which are html fields.
+            This means I need to unescape the src and src_file fields"""
+            for col, val in enumerate(row[len(ID_COLUMNS):]):
+                # print(field_map)
+                nt = next((_nt for _nt in notetypes if row[NOTETYPE_COL] == _nt.__name__), None)
+                if col >= len(nt.noteFields): break
+
+                if nt.noteFields[col] in should_unescape_fields:
+                    row[col + len(ID_COLUMNS)] = html.unescape(val)
             # print("starting", reader.line_num)
 
             check_data_row(row, reader) # bunch of asserts. in here
@@ -163,7 +177,7 @@ def main():
                 ffile_str = mk_fake_file_str(note_objs)
                 resp_objs = []
 
-                resp_objs = [{field: val for field, val in note.g_dict_in_row_order().items() if field not in omited_fields} for note in note_objs]
+                resp_objs = [{field: val for field, val in note.g_dict_in_row_order().items() if field not in omitted_fields} for note in note_objs]
 
                 # just to preview output
                 exchange = MsgExchange(MsgObj("user", ffile_str), MsgObj("assistant", resp_objs), SYSTEM_MSG_OBJ)
@@ -185,14 +199,14 @@ def main():
                 input_index_memo: dict[str, int] = {}
                 ns_index = 0
                 for note in note_objs:
-                    # Grp notes with the same input into the same split
-                    # if note.input in memo the val is the index it should go else it's ns_index
-                    if not (note.input in input_index_memo):
-                        input_index_memo[note.input] = ns_index # making sure to do this before updating
+                    # Grp notes with the same src into the same note split (not to be confused with train/test split)
+                    # if note.src in memo the val is the index it should go else it's ns_index
+                    if not (note.src in input_index_memo):
+                        input_index_memo[note.src] = ns_index # making sure to do this before updating
                         ns_index = ns_index + 1 if ns_index + 1 < len(note_split) else 0  # updating for next iteration
 
                     
-                    index = input_index_memo[note.input]
+                    index = input_index_memo[note.src]
                     note_split[index].append(note)
                 # now it's possible that all the notes went to one split
                 # unlucky, just get rid of it.
@@ -200,7 +214,9 @@ def main():
                 print([fn] + [len(ns) for ns in note_split], f"{len(note_objs)} note(s) and {len(input_index_memo)} unique input(s)")
                 for count, ns in enumerate(note_split, start=1):
                     ffile_str = mk_fake_file_str(ns)
-                    resp_objs = [{field: val for field, val in note.g_dict_in_row_order().items() if field not in omited_fields} for note in ns]
+                    resp_objs = [{field: val for field, val in note.g_dict_in_row_order().items() if field not in omitted_fields} for note in ns]
+                    for note in ns:
+                        for_llm[note.guid] = {field: val for field, val in note.g_dict_in_row_order().items() if field == "src" or field not in omitted_fields}
                     exchange = MsgExchange(MsgObj("user", ffile_str), MsgObj("assistant", resp_objs), system = SYSTEM_MSG_OBJ)
                     convo = Conversation([exchange]) # still only 1 exchange per convo to save context
                     
@@ -216,11 +232,14 @@ def main():
         data_dir = "datasets"
         dataset_name = "notes_to_json"
         ds_style2.train.conversations.extend(mk_screwed_up_convos(SYSTEM_MSG_OBJ))
+        
         # print with new style expanded for visual clarity
-        for split_name, split in ds_style2.__dict__.items():
-            with open(os.path.join(data_dir, "json", f"{dataset_name}_expanded.json"), 'w', encoding='UTF-8') as fake_file:
+        with open(os.path.join(data_dir, "json", f"{dataset_name}_for_llm.json"), 'w', encoding='UTF-8') as llm_file:
+            dump = json.dumps(for_llm, **dump_args)
+            llm_file.write(dump)
+            with open(os.path.join(data_dir, "json", f"{dataset_name}_{split_name}_expanded.json"), 'w', encoding='UTF-8') as json_expanded:
                 dump = json.dumps(split, **dump_args)
-                fake_file.write(dump)
+                json_expanded.write(dump)
 
         # assistant objs becoming single strings
         for split_name, split in ds_style2.g_splits().items():
@@ -231,12 +250,13 @@ def main():
 
         # print with new style
         for split_name, split in ds_style2.__dict__.items():
-            with open(os.path.join(data_dir, "json", f"{dataset_name}.json"), 'w', encoding='UTF-8') as fake_file:
+            with open(os.path.join(data_dir, "json", f"{dataset_name}_{split_name}.json"), 'w', encoding='UTF-8') as json_file:
                 dump = json.dumps(split, **dump_args)
-                fake_file.write(dump)
+                json_file.write(dump)
             re_loaded = json.loads(dump)
             df = pandas.DataFrame(re_loaded)
-            df.to_parquet(os.path.join(data_dir, "parquet", f"{dataset_name}.parquet"))
+            df.to_parquet(os.path.join(data_dir, "parquet", f"{dataset_name}_{split_name}.parquet"))
+        print("data prep complete")
         return
         # old style generation didn't work but still here if needed. sonewhere ub there..
         # with open(f'convos_expanded_{s}.json', 'w+', encoding='UTF-8') as fake_file:
@@ -251,13 +271,15 @@ def main():
             # read_test.valid_json_outputs_test()
 def mk_fake_file_str(notes: List[_NoteType]) -> str:
     ffile_str = ""
+    # ffile_str += f"seed_start: {seed_start}\n"
     input_memo: Dict[str, List] = {}
     # need to count uniques first to see how much garbage to add if any
     for note in notes:
-        input_memo.setdefault(note.input, []).append(note)
+        input_memo.setdefault(note.src, []).append(note)
     uniques = len(input_memo)
     garbage_cap = int(math.ceil(uniques * 0.75)) + 1
     garbage_chance = 0.24
+    # garbage_chance = 0.0
     garbage_max = random.randint(min(1, len(notes)), garbage_cap) if random.random() <= garbage_chance else 0
     # garbage_max = random.randint(0, garbage_cap)
     input_memo = {}
@@ -267,8 +289,8 @@ def mk_fake_file_str(notes: List[_NoteType]) -> str:
     while note_count < len(notes) or garbage_count < garbage_max:
         note = notes[note_count] if note_count < len(notes) else None
         # if we already added this input, adding note to memo is all that is required
-        if note and note.input in input_memo:
-            input_memo[note.input].append(note)
+        if note and note.src in input_memo:
+            input_memo[note.src].append(note)
             note_count += 1
             continue
         # add separators. 30% of the time at the beginning of the file as well
@@ -277,15 +299,16 @@ def mk_fake_file_str(notes: List[_NoteType]) -> str:
                 ffile_str += f"\n{g_random_sparator() * random.randint(1,2)}\n"
             else:
                 ffile_str += "\n" + g_random_sparator() * random.randint(2, 14) + "\n"
-        else: first = False
+        if first:
+            first = False
         # add the input to the fake file str and update memo
         if garbage_count < garbage_max and (not note or random.random() <= 0.5):
             # add garbage
             ffile_str += g_random_garbage()
             garbage_count += 1
         else: # add the actual data
-            ffile_str += note.input
-            input_memo[note.input] = [note]
+            ffile_str += note.src
+            input_memo[note.src] = [note]
             note_count += 1
 
     # add a final separtor at the end of the file 30% of the time
@@ -378,11 +401,11 @@ def clean():
             if row[0] == "" or row[0].startswith('#'):
                 continue
             nr = NoteRow(row, col_map[row[NOTETYPE_COL]], NOTETYPE_COL)
-            if '\t' in nr["input"]:
+            if '\t' in nr["src"]:
                 count += 1
             else:
                 scroll()
-                print(nr["input"])
+                print(nr["src"])
                 input()
             
         print(f"there are {count} notes that have tabs in the input")
