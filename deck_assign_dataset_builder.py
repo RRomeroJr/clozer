@@ -50,7 +50,7 @@ r'nY>J|^.mER', r'B?oy0[Ei7a', r'CsY-u+GuGX', r'rGuzVG8ATv', r'mLXLI8zb(m', r'Awa
             if len(guids) == 2: 
                 test_guids.add(random.choice(guids))
                 continue
-        # print("These are your test guids. Hardcode and look for them when building the dataset to add to test\n", "{" + ", ".join({f"r'{e}'" for e in test_guids}) + "}")
+        print("These are your test guids. Hardcode and look for them when building the dataset to add to test\n", "{" + ", ".join({f"r'{e}'" for e in test_guids}) + "}")
         for deck, guid_list in deck_to_guids.items():
             print(f"{deck}: {len(guid_list)}")
     #endregion
