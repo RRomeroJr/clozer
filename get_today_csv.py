@@ -1,3 +1,4 @@
+import html
 import csv, gc, csv, time, colorama, os, json, re
 
 import torch
@@ -9,7 +10,8 @@ from anki_csv_reader import AnkiCsvReader
 from anki_helper_classes import _NoteType
 from us_helpers import delete_specific_directories, find_checkpoint
 delete_specific_directories()
-note_maker_dir = "outputs/note_maker"
+note_maker_dir = "note_maker_before_src_training"
+# note_maker_dir = "outputs/note_maker"
 deck_assigner_dir = "outputs/assigner"
 import sys
 chpnt = find_checkpoint(
@@ -23,6 +25,7 @@ from transformers import PreTrainedModel
 from peft.peft_model import PeftModelForCausalLM
 from transformers.models.llama.tokenization_llama_fast import LlamaTokenizerFast
 from transformers import TextStreamer
+from text_extraction.odt_text_extractor import *
 
 pat = re.compile(r"<\|im_start\|>assistant\n(.*)<\|im_end\|>")
 colorama.init()
@@ -51,12 +54,12 @@ class TextCollector(TextStreamer):
         self.text += text
         super().on_finalized_text(text, stream_end)
 text_collector = TextCollector(tokenizer)
-todays_notes_path = "D:\DocumentsHDD\ToCards\ToCards_03_21_25.txt" # logic to find today's notes goes here
+todays_notes_path = "D:\DocumentsHDD\ToCards\ToCards_05_02_25.odt" # logic to find today's notes goes here
 today_file_name, today_file_ext = os.path.splitext(os.path.basename(todays_notes_path))
 
-todays_str = None
-with open(todays_notes_path, 'r', encoding='utf-8') as f:
-    todays_str = f.read()
+todays_str = extract_text_from_odt(todays_notes_path)
+# with open(todays_notes_path, 'r', encoding='utf-8') as f:
+#     todays_str = f.read()
 
 def prompt_model(inp, system_prompt = None):
     messages = []
@@ -137,7 +140,7 @@ if __name__ == "__main__":
     deck_default = "Active::AI_DEFAULT"
     temp = AnkiCsvReader("C:/Users/Richie/AppData/Roaming/Anki2/User 1/collection.anki2")
     decks_set = set(temp.g_col_decks())
-    print("decks_set", decks_set)
+    # print("decks_set", decks_set)
     temp.close()
     omitted_deck_keywords = {"Inactive", "Personal", "AlreadySeenBoost"}
     id_fields_order = ("guid", "notetype", "deck")
@@ -179,6 +182,7 @@ if __name__ == "__main__":
 
     new_notes_dir = "new_notes"
     new_csv_paths = []
+    dont_encode = {"Text","guid","notetype","deck"}
     if total > 0:
         print(f"{total} arl{'ie' if total == 1 else 'ī'} not{'i' if total == 1 else 'ī'} syt ankot emi!")
         for type, note_list in notetype_name_to_notes_dict.items():
@@ -191,6 +195,6 @@ if __name__ == "__main__":
                 writer.writerow(["#notetype column:1"])
                 writer.writerow(["#deck column:2"])
                 for note in note_list:
-                    writer.writerow(note.values())
+                    writer.writerow( [val if field in dont_encode else html.escape(val) for field, val in note.items()] )
                 new_csv_paths.append(csv_path)
         print(f"{csv_name} gōntaks!")
