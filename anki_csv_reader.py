@@ -18,7 +18,6 @@ from finetune_sys_prompt import finetune_sys_prompt
 import pandas
 from anki_helper_classes import _ClozeType, _NoteType, AnkiRow, TopicCloze, ExCloze
 from data_helper_classes import ClassToDictEncoder, MsgExchange, MsgObj, Conversation, RRJRDataset, RRJRDatasetDict
-from rrjr.rrjr_fm import g_seq_filename, sp_open
 from data_prep_funcs import *
 from anki.collection import Collection as AnkiCollection
 # import pandas
