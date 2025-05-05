@@ -1,3 +1,4 @@
+import json
 import os
 import re
 import shutil
@@ -13,10 +14,12 @@ def g_checkpoint_dirs(chpnts_dir="./outputs"):
     return res
 def g_checkpoint_dirs_sorted(desc = False, chpnts_dir="./outputs"):
     dirs = g_checkpoint_dirs(chpnts_dir=chpnts_dir)
-    print(dirs)
+    # print(dirs)
+    if len(chpnts_dir) > 1 and (chpnts_dir[-1] == '/' or chpnts_dir[-1] == '\\'):
+        chpnts_dir = chpnts_dir[:-1]
     re_str = "{}/checkpoint".format(chpnts_dir.replace('\\', '/'))
     re_str += r"-(\d+)"
-    print(re_str)
+    # print(re_str)
     pattern = re.compile(re_str)
     return sorted(dirs, key=lambda x : int(pattern.match(x)[1]), reverse=desc)
 
@@ -59,11 +62,12 @@ def find_checkpoint_num(chpnt_num: str | int, silent = False, chpnts_dir = "./ou
         try:
             chpnt_num = int(chpnt_num)
         except Exception as e:
-            raise Exception(f"couldn't cast {inp} to int") from e
-    
+            raise Exception(f"couldn't cast {chpnt_num} to int") from e
+    # print(f"user wants chpnt {chpnt_num}")
     chpnt_path = f"{chpnts_dir}/checkpoint-{chpnt_num}"
     if os.path.exists(chpnt_path):
-        chpnt = {"path": chpnt_path, "num": chpnt_num}
+        with open(os.path.join(chpnt_path, 'trainer_state.json'), 'r', encoding='UTF-8') as f:
+            chpnt = {"path": chpnt_path, "num": chpnt_num, "trainer_state": json.loads(f.read())}
         if not silent: print(f"Returning checkpoint {chpnt['num']} at\n", chpnt["path"])
         return(chpnt)
     return None
@@ -106,6 +110,8 @@ def find_latest_checkpoint(silent = False, chpnts_dir= "./outputs") -> dict[str,
             res =  {"path": latest_checkpoint_path,"num": latest_num}
         else:
             res =  {"path": os.path.relpath(latest_checkpoint_path), "num": latest_num}
+        with open(os.path.join(res['path'], 'trainer_state.json'), 'r', encoding='UTF-8') as f:
+            res["trainer_state"] = json.loads(f.read())
         if not silent: print(f"Returning checkpoint {res['num']} at\n", res["path"])
     else:
         print("No checkpoint directories found.")
