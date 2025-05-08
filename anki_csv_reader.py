@@ -48,6 +48,7 @@ class AnkiCsvReader:
     fields_dict: dict[str, dict[str, int]] = field(default=None, init=False)
     tags_start: int = field(default=None, init=False)
     data_start: int = field(default=None, init=False)
+    test_guids: set = field(default=None, init=False)
     def __post_init__(self):
         self.anki_collection = AnkiCollection(self.anki_collection_path)
         if self.dataset_path != None:
@@ -80,6 +81,10 @@ class AnkiCsvReader:
                 elif search[1] == "tags":
                     print(search[0])
                     self.tags_start = int(search[2]) - 1
+                elif search[1] == "test_guids":
+                    print(search[0])
+                    self.test_guids = set(search[2].strip().split(' '))
+                    print('self.test_guids set to\n', self.test_guids)
                 continue
             else:
                 self.reader_offset = self.reader.line_num
