@@ -1,4 +1,4 @@
-# Note Maker - Automated Anki Card Generator
+### Note Maker - Automated Anki Card Generator
 
 This project automates the process of converting my daily notes into Anki flashcards using AI models. It consists of two main components: a note maker LoRA that converts raw notes into structured JSON objects, and a deck assigner LoRA that categorizes these notes into appropriate Anki decks.
 
@@ -23,15 +23,63 @@ The main workflow is handled by `get_today_csv.py`, which:
 └── new_notes/           # Output dir for the generated CSV files to import to Anki
 ```
 
-## Usage
+### Usage
 
-1. Prepare your daily note file in your preferred format
-2. Run the conversion script:
+## Personal Notes -> Importable TSV For Anki
+
+# For Yourown Personal Note
+Skip this if you just want to test with the provided example personal note.
+
+Look at the exmaple personal note for reference. I spseparte info "blocks" with at least one "-" on a new line. The moodule is trained with random sparator langths and with "-", "_", "=" or "–" as separator characters. It should figure it out.
+
+# Workflow
+1. Set `todays_notes_path`in `get_today_csv.py` to the path of the personal note that you want to make Anki notes for.
+2. Run the script:
 ```bash
 python get_today_csv.py
 ```
 3. Import the generated CSV file in new_notes/ into Anki
 
+## Deck Assigner Training
+
+# For Yourown Anki Decks setup
+Skip this if you just want to test with provided example deck-assigner data.
+
+1. Go you your Anki and search/ filter for all notes in decks that you would like the deck-assigner to potentially assign generated Anki notes to.
+  - It's a good idea to tag your selection with something like `deck_assign_train` so that you can easily search for this tag and easily re-generate this dataset if needed.
+2. Export your deck-assigner dataset from Anki
+3. In `deck_assign_dataset_builder.py` set the `dataset_path` and your Anki `collection_path`. (link to Anki collection default path would go here)
+4. Set `g_guids` to `True`.
+  - This is going to look through your Anki export and give you some Anki note guids that you can use as your test/ eval dataset
+5. Set `g_guids` to `False`.
+6. run
+```bash
+python deck_assign_dataset_builder.py
+```
+this will generate a `deck_assigner_train.parquet` and `deck_assigner_test.parquet` file in `datasets/parquet`
+7. in `deck_assigner_trainer.py` make sure `train` and `test` are set properly in the following code block. Incase you changed the default names.
+```python
+ origdataset = dataset = load_dataset('parquet', 
+                        data_files={
+                            'train': 'datasets/parquet/deck_assigner_train.parquet',
+                            'test': 'datasets/parquet/deck_assigner_test.parquet'
+                        },
+                        split=None)
+```
+# Workflow
+1. If all your doing is training the deck-assigner with the provided example data then all that is needed is to run:
+```bash
+python deck_assigner_trainer.py
+```
+
+This will generate a `outputs/deck_assigner` and start saving checkpoints there as the model trains
+
+## Notemaker Training
+
+# For Yourown Personal Anki Note Types
+This gets a little more complex to set up. If all you want to is test with the provided data you can skip this section.
+
+# Workflow
 ## Models
 - Both are trained from the Mistral-7B-v0.1
 
