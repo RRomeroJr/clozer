@@ -11,12 +11,11 @@ fake_files
 attempt[0-9]*
 ToCards_*
 *.pyc
-datasets/json
-datasets/parquet
+datasets/*
+!datasets/
 .ankivenv
 note_maker_before_src_training
 assigner
 ignore
-datasets/anki_exports
 .vscode
 scrap
