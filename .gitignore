@@ -12,7 +12,7 @@ attempt[0-9]*
 ToCards_*
 *.pyc
 datasets/*
-!datasets/
+!datasets/.gitkeep
 .ankivenv
 note_maker_before_src_training
 assigner
