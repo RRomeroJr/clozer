@@ -1,21 +1,40 @@
-.ssh*
-outputs*
-unsloth_compiled_cache
-from_google
-_unsloth_sent
-_unsloth_temp
-llama.ccp
-vcpkg
-lora_model
-fake_files
-attempt[0-9]*
-ToCards_*
+# Python-related files
 *.pyc
-datasets/*
-!datasets/.gitkeep
+
+# Environment and editor files
 .ankivenv
+.vscode
+vcpkg
+llama.ccp
+
+# Temporary and output directories
+outputs*
+_unsloth_temp*
+_unsloth_sent*
+unsloth_compiled_cache
+
+# Model and training related
+lora_model
+from_google
+
+# Development directories
+note_maker_lora_dev/*
+deck_assigner_lora_dev/*
 note_maker_before_src_training
 assigner
-ignore
-.vscode
+
+# Datasets - ignore all except .gitkeep and examples
+datasets/*
+!datasets/.gitkeep
+!datasets/examples
+
+# Temporary/test files
+fake_files
+attempt[0-9]*
 scrap
+ignore
+ToCards_*
+deck_assigner_not_sure_where_came_from/
+
+# Working directories - ignore all contents
+new_notes/*

@@ -10,9 +10,10 @@ from anki_csv_reader import AnkiCsvReader
 from anki_helper_classes import _NoteType
 from us_helpers import delete_specific_directories, find_checkpoint
 delete_specific_directories()
-note_maker_dir = "note_maker_before_src_training"
+note_maker_dir = "note_maker_lora"
 # note_maker_dir = "outputs/note_maker"
-deck_assigner_dir = "outputs/assigner"
+# deck_assigner_dir = "outputs/assigner" # what I've been calling it till 5/15/25
+deck_assigner_dir = "deck_assigner_lora"
 import sys
 chpnt = find_checkpoint(
     chpnt_num=sys.argv[1] if len(sys.argv) > 2 else None, 
