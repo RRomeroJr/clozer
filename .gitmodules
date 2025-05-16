@@ -1,0 +1,3 @@
+[submodule "rrjr_py_pkg"]
+	path = rrjr_py_pkg
+	url = https://github.com/RRomeroJr/rrjr_py
