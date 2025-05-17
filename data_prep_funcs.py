@@ -836,14 +836,36 @@ def g_screwed_up_convos_old(system_msg: MsgObj = None) -> list[Conversation]:
     to_return.append(g_empty_convo())
     return to_return
     
-    
+def mid_plus_minus_k(data, k):
+    data = sorted(data)
+    print(data, f"k == {k}")
+    n = len(data)
+    # print ("n == ", n)
+    isOdd = bool(n % 2)
+    # print("isOdd", isOdd)
+    middle = (n // 2) 
+    # -1 to make indexif odd needs to be +1 which cancles out
+    if not isOdd: middle -= 1 
+    # print("middle", middle)
+    start = middle - k if isOdd else middle - (k - 1)
+    end = middle + k
+    # print(start, middle, end)
+    to_return = data[start: end+1]
+    print(to_return)
+    return to_return
 # print(g_random_words(10, max_length=9))
 # print(random_html_tagger(""))
 if __name__ == "__main__":
-    from finetune_sys_prompt import finetune_sys_prompt
-    convos = mk_screwed_up_convos({"role": "system", "content": finetune_sys_prompt})
-    for i in range(len(convos) - 1, -1, -1):
-        # print("test", end='')
-        print(convos[i].exchanges[0].user.content)
-        input(f"content from i = {i}")
-        print("\n"+"88888_ignore_this88888_this_is_a_sparator_88888"* 2 + "\n")
+    
+    print(mid_plus_minus_k((x for x in range(10)), 1))
+    print(mid_plus_minus_k((x for x in range(11)), 1))
+    print(mid_plus_minus_k((x for x in range(10)), 2))
+    print(mid_plus_minus_k((x for x in range(13)), 2))
+    print(mid_plus_minus_k((x for x in range(13)), 1))
+    # from finetune_sys_prompt import finetune_sys_prompt
+    # convos = mk_screwed_up_convos({"role": "system", "content": finetune_sys_prompt})
+    # for i in range(len(convos) - 1, -1, -1):
+    #     # print("test", end='')
+    #     print(convos[i].exchanges[0].user.content)
+    #     input(f"content from i = {i}")
+    #     print("\n"+"88888_ignore_this88888_this_is_a_sparator_88888"* 2 + "\n")

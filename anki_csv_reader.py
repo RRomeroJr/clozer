@@ -21,7 +21,7 @@ from data_helper_classes import ClassToDictEncoder, MsgExchange, MsgObj, Convers
 from data_prep_funcs import *
 from anki.collection import Collection as AnkiCollection
 # import pandas
-
+from rrjr_py import ellipsis_truc, tri_split
 from dataclasses import dataclass, field
 import csv
 from typing import IO, Any
@@ -37,18 +37,59 @@ class AnkiCsvReader:
     anki_collection: AnkiCollection = field(init=False)
     file: IO[Any] = field(init=False)
     reader: Iterator[List[str]] = field(init=False)
-    guid_col: int = field(default=None, init=False)
-    notetype_col: int = field(default=None, init=False)
-    deck_col: int = field(default=None, init=False)
     max_cols: int = field(default=None, init=False)
     num_regex: re.Pattern = field(default=re.compile(r"[0-9][0-9]*"), init=False)
-    col_arg_regex: re.Pattern = field(default=re.compile(r'#(\w+) column:(\d+)'), init=False)
+    anki_key_regex: re.Pattern = field(default=re.compile(r'^#(.*?):(.*)$'), init=False)
     reader_offset: int = field(default=None, init=False)
     id_cols_dict: dict[str, int] = field(default=None, init=False)
     fields_dict: dict[str, dict[str, int]] = field(default=None, init=False)
-    tags_start: int = field(default=None, init=False)
     data_start: int = field(default=None, init=False)
     test_guids: set = field(default=None, init=False)
+    headers: dict[str,str] = field(default_factory=dict, init=False)
+    @property
+    def guid_col(self):
+        try:
+            return self.headers["guid column"] - 1
+        except KeyError: return None
+    @guid_col.setter
+    def guid_col(self, inp: int):
+        if not isinstance(inp, int):
+            raise ValueError("guid_col value must be an int")
+        self.headers["guid column"] = inp + 1
+
+    @property
+    def notetype_col(self):
+        try:
+            return self.headers["notetype column"] - 1
+        except KeyError: return None
+    @notetype_col.setter
+    def notetype_col(self, inp: int):
+        if not isinstance(inp, int):
+            raise ValueError("notetype_col value must be an int")
+        self.headers["notetype column"] = inp + 1
+
+    @property
+    def deck_col(self):
+        try:
+            return self.headers["deck column"] - 1
+        except KeyError: return None
+    @deck_col.setter
+    def deck_col(self, inp: int):
+        if not isinstance(inp, int):
+            raise ValueError("deck_col value must be an int")
+        self.headers["deck column"] = inp + 1
+
+    @property
+    def tags_start(self):
+        try:
+            return self.headers["tags"] - 1
+        except KeyError: return None
+    @tags_start.setter
+    def tags_start(self, inp: int):
+        if not isinstance(inp, int):
+            raise ValueError("tags_start value must be an int")
+        self.headers["tags"] = inp + 1
+
     def __post_init__(self):
         self.anki_collection = AnkiCollection(self.anki_collection_path)
         if self.dataset_path != None:
@@ -64,31 +105,22 @@ class AnkiCsvReader:
             if row[0] == "":
                 continue
             if row[0].startswith('#'):
-                search = re.search(self.col_arg_regex, row[0])
+                search = re.search(self.anki_key_regex, row[0])
                 if not search:
                     print("skiping # row\n", row)
                     continue
-                elif search[1] == "notetype":
-                    print(search[0])
-                    self.notetype_col = int(search[2]) - 1
-                    print(self.notetype_col)
-                elif search[1] == "deck":
-                    print(search[0])
-                    self.deck_col = int(search[2]) - 1
-                elif search[1] == "guid":
-                    print(search[0])
-                    self.guid_col = int(search[2]) - 1
-                elif search[1] == "tags":
-                    print(search[0])
-                    self.tags_start = int(search[2]) - 1
-                elif search[1] == "test_guids":
-                    print(search[0])
-                    self.test_guids = set(search[2].strip().split(' '))
-                    print('self.test_guids set to\n', self.test_guids)
+                value_stripped = search[2].strip()
+                val = value_stripped
+                if search[1] == "guid column" or search[1] == "deck column" or search[1] == "notetype column" or search[1] == "tags":
+                    val = int(value_stripped)
+
+                print(f"#{search[1]}:{ellipsis_truc(val)}")
+                self.headers[search[1]] = val
                 continue
             else:
                 self.reader_offset = self.reader.line_num
                 _id_cols = {"guid": self.guid_col, "notetype": self.notetype_col, "deck": self.deck_col, 'tags_start': self.tags_start}
+                print(_id_cols)
                 self.id_cols_dict = {k: v for k, v in _id_cols.items() if v != None}
                 self.data_start = len(self.id_cols_dict)
                 break
@@ -106,6 +138,31 @@ class AnkiCsvReader:
         print(f"Restarting iter for use")
         self.restart_iter()
         print(f"{self.__class__.__name__} load complete, {self.id_cols_dict}\n  {self.dataset_path},")
+    def rewrite(self, out_path=None, overwrite=False):
+        if out_path is None and not overwrite:
+            ValueError("You must provide an out path or set overwrite to True")
+        head, fn, ext = (None, None, None)
+        rewrite_path = None
+        if overwrite:
+            head, fn, ext = tri_split(self.dataset_path)
+            out_path = os.path.join(head, f"{fn}_rewrite_temp{ext}")
+        with open(out_path, 'w', newline='', encoding='utf-8') as f:
+            _writter = csv.writer(f, delimiter='\t')
+            _writter.writerows([['#separator:tab'], ['#html:true']])
+            for k, v in self.headers.items():
+                if k == 'separator' or k == 'html': continue
+                _writter.writerow([f'#{k}:{v}'])
+            self.restart_iter()
+            self.fast_forward_to_data()
+            for row in self.reader:
+                _writter.writerow(row)
+        print("Closing old file\n", self.dataset_path)
+        self.file.close()
+        if overwrite:
+            print("Overwriting old file")
+            os.replace(out_path, self.dataset_path)
+        print("Reloading overwritten file")
+        self.load(self.dataset_path)
     def close(self):
         if hasattr(self, 'reader') and self.reader:
             del self.reader
