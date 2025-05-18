@@ -55,12 +55,12 @@ GPUS = 1 # maybe one day :(
 TOTAL_BATCH_SIZE = GPUS * BATCH_SIZE * GRADIENT_ACC_STEPS
 print()
 for i in range(ITERS):
-    origdataset = dataset = load_dataset('parquet', 
-                        data_files={
-                            'train': 'attempt_3_5_train.parquet',
-                            'test': 'attempt_3_5_test.parquet'
-                        },
-                        split=None)
+    dataset = load_dataset('parquet', 
+                data_files={
+                    'train': 'attempt_3_5_train.parquet',
+                    'test': 'attempt_3_5_test.parquet'
+                },
+                split=None)
     # origdataset = load_dataset('parquet', data_files='D:\DocumentsHDD\Coding_Scrap\python\ollama\clozer\cloze.parquet', split='train') # use this
     """ So I used parquet here to mimick the same structure as the example below from hf. But this function
     can take in csv and json. If in the future I decide that making parquet is too annoy to do.
