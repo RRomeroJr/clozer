@@ -1,0 +1,8 @@
+5/18/25
+Atleast all of the dirs I wanted and the repos I wanted to clone
+got cloned
+
+rrjr_py got installed no problem
+
+I'm just not sure about the packagaes tho. Might require more
+effort
