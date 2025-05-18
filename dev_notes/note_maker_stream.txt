@@ -70,3 +70,9 @@ Challenges:
 
 Welp I updated acr to work with tags anyway. So I guess I have that if I still want
 to do this.
+
+5/17/25
+Need to add anki python module to the reqs but idk if that will play nicely with the setup process
+it needs a different version of protobuff than something else.
+
+I have a feeling that it might cause an error which will make the whole process stop.

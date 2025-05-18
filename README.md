@@ -20,6 +20,7 @@ This project automates the process of converting my daily notes into Anki flashc
   - `CURL_LIBRARY = "path\to\vcpkg\installed\x64-windows\lib\libcurl.lib"`
   - `CURL_INCLUDE_DIR = "path\to\vcpkg\installed\x64-windows\include"`
   - `CMAKE_PREFIX_PATH = "path\to\vcpkg\installed\x64-windows"`
+7. Run `python clone_repos.py` if you want the example datasets and LoRAs that I use for my own use case.
 
 # Usage
 
