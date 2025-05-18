@@ -5,22 +5,20 @@ This project automates the process of converting my daily notes into Anki flashc
 # Installation
 
 1. clone the repo like so
-`git clone --recurse-submodules="rrjr_py_pkg" https://github.com/RRomeroJr/clozer`
+`git clone --recurse-submodules="rrjr_py_pkg" https://github.com/RRomeroJr/clozer .`
 2. Highly recommended to make a new virtual environment
-3. Install the requirments.txt
-  - `pip install -r requirments.txt`
-4. Install the rrjr_py_pkg submodule as an editiable module. From top level run..
-  - `pip install -e rrjr_py_pkg --config-settings editable_mode=strict`
-5. Install vcpkg from microsoft to use cmake. I'm pretty sure this is only needed when converting to gguf. That is what I needed it for and I have yet to test without it.
+3. Run
+`python auto_setup.py`
+  - You will likely see a red warning about the anki module requiring a certain version of protobuf that conflicts with some other modules. For me this hasn't been a problem yet. Will update in the future if it does.
+4. Install vcpkg from microsoft to use cmake. I'm pretty sure this is only needed when converting to gguf. That is what I needed it for and I have yet to test without it.
   - `git clone https://github.com/Microsoft/vcpkg.git your\preferred\location\vcpkg`
   - `cd your\preferred\location\vcpkg`
   - `.\bootstrap-vcpkg.bat -disableMetrics`
   - `.\vcpkg install curl:x64-windows`
-6. Add the following env vars to your environment. Might be different for linux/ mac.
+5. Add the following env vars to your environment. Might be different for linux/ mac.
   - `CURL_LIBRARY = "path\to\vcpkg\installed\x64-windows\lib\libcurl.lib"`
   - `CURL_INCLUDE_DIR = "path\to\vcpkg\installed\x64-windows\include"`
   - `CMAKE_PREFIX_PATH = "path\to\vcpkg\installed\x64-windows"`
-7. Run `python clone_repos.py` if you want the example datasets and LoRAs that I use for my own use case.
 
 # Usage
 
