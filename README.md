@@ -1,6 +1,6 @@
 # Note Maker - Automated Anki Card Generator
 
-This project automates the process of converting my daily notes into Anki flashcards using AI models. It consists of two main components: a note maker LoRA that converts raw notes into structured JSON objects, and a deck assigner LoRA that categorizes these notes into appropriate Anki decks.
+This project automates the process of converting my personal daily notes into Anki flashcards using AI. It consists of two main components: a note maker LoRA that converts raw notes into structured JSON objects, and a deck assigner LoRA that categorizes these notes into appropriate Anki decks.
 
 # Installation
 
