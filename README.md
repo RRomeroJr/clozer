@@ -80,14 +80,9 @@ This will generate a `outputs/deck_assigner` and start saving checkpoints there 
 This gets a little more complex to set up. If all you want to is test with the provided data you can skip this section.
 
 ### Workflow
+
 ### Models
-- Both are trained from the Mistral-7B-v0.1
-
-### Note Maker Model
-- Converts raw notes into structured JSON objects
-
-### Deck Assigner Model
-- Looks at the generated assigns them to an existing Anki deck
+- Both the deck assigner and note maker are trained from the Mistral-7B-v0.1
 
 ### Output Format
 
