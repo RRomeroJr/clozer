@@ -35,7 +35,7 @@ Look at the exmaple personal note for reference. I spseparte info "blocks" with 
 ```bash
 python get_today_csv.py
 ```
-3. Import the generated CSV file in new_notes/ into Anki
+3. Import the generated TSV file in new_notes/ into Anki
 
 ## Deck Assigner Training
 
@@ -86,7 +86,7 @@ This gets a little more complex to set up. If all you want to is test with the p
 
 ### Output Format
 
-The final CSV output is formatted for direct import into Anki, containing:
+The final TSV output is formatted for direct import into Anki, containing:
 - Notetype
 - Deck assignment
 - All field data (Besides tags. Tags not supported yet)
